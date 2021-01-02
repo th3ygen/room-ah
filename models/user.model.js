@@ -8,6 +8,8 @@ const schema = new mongoose.Schema({
         type: String, required: true
     },
 
+    photoUrl: String,
+
     role: String,
 
     verified: Boolean,

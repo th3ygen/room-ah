@@ -1,30 +1,5 @@
 require('dotenv').config();
 
-const arr = [
-    {
-        test: 'wow1',
-        id: 'www'
-    },
-    {
-        test: 'wow2',
-        id: 'zz'
-    },
-    {
-        test: 'wow3',
-        id: 'eee'
-    }
-];
-
-const res = {
-    array: [
-        {
-            ...arr.test
-        }
-    ]
-};
-
-console.log(res);
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');

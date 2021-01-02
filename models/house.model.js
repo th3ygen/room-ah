@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
+    title: { type: String, required: true },
+    details: String,
+
     address: {
-        lineOne: String,
+        lineOne: { type: String, required: true },
         lineTwo: String,
-        city: String,
-        postcode: String,
-        country: String,
+        city: { type: String, required: true },
+        postcode: { type: String, required: true },
+        country: { type: String, required: true }
     },
 
     pricing: {
@@ -17,8 +20,6 @@ const schema = new mongoose.Schema({
     gps: {
         lon: Number, lat: Number
     },
-
-    details: String,
 
     mediaFiles: [{
         label: { type: String, required: true },

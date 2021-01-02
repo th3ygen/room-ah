@@ -48,7 +48,12 @@ module.exports = {
 
                 const houses = await House.find({ ownerId: owner._id });
 
-                resolve({ houses })
+                houses.forEach(h => {
+                    delete h._id;
+                    delete h.__v;
+                });
+
+                resolve(houses);
             } catch(e) {
                 reject({
                     code: 400,
