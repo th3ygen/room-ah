@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+html, body {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  color: black;
+}
+
+/* splide theming */
+.splide__arrow {
+  background: #f4772a !important;
+  opacity: 1 !important;
+  width: 3rem !important;
+  height: 3rem !important;
+}
+
+.container {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  background-color: #fff;
+}
+
+.top-navbar {
+  position: relative;
+  height: fit-content;
+  width: 80%;
+  margin: 0 auto;
+  padding: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.top-navbar > .logo {
+  font-size: 2rem;
+}
+.top-navbar > .nav-items {
+  position: relative;
+  height: 100%;
+  width: fit-content;
+  display: flex;
+}
+.top-navbar > .nav-items > .item {
+  position: relative;
+  padding: 10px 25px;
+  cursor: pointer;
+}
+.top-navbar > .nav-items > .item.active {
+  color: #f4772a;
+}
+.top-navbar > .nav-items > .item:hover {
+  color: #f4772a;
+}
+.top-navbar > .authoriz {
+  position: relative;
+  height: 100%;
+  width: fit-content;
+  display: flex;
+}
+.top-navbar > .authoriz > div {
+  position: relative;
+  padding: 10px 25px;
+}
+.top-navbar > .authoriz > .login {
+  color: white;
+  background-color: #f4772a;
+  border-radius: 20px;
+}
+
+.house-preview {
+  position: relative;
+  width: 100%;
+  /* background-color: #bcbcbc; */
+}
+.house-preview .preview-container {
+  position: relative;
+  height: 70vh;
+  width: 100%;
+  display: flex;
+}
+.house-preview .preview-container > .details {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  height: fit-content;
+  width: fit-content;
+  padding: 30px;
+  padding-right: 50px;
+  background-color: #fff;
+  opacity: 0;
+  transition: 0.3s all;
+  z-index: 2;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.house-preview .preview-container > .details > .price {
+  font-size: 1.5rem;
+  color: #13957f;
+  margin-bottom: 20px;
+}
+.house-preview .preview-container > .details > .price > .origin {
+  font-size: 0.8rem;
+  text-decoration: line-through;
+  color: #bcbcbc;
+}
+.house-preview .preview-container > .main-img {
+  position: relative;
+  height: 90%;
+  width: 100%;
+  background-image: url("https://preview.colorlib.com/theme/homey/images/property_1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-self: center;
+  opacity: 0.7;
+  transition: 0.3s all;
+  z-index: 1;
+}
+.house-preview .splide__slide.is-active .details {
+  opacity: 1;
+}
+.house-preview .splide__slide.is-active .main-img {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+}
+
+/*# sourceMappingURL=global.css.map */
