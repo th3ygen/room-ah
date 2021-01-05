@@ -24,6 +24,26 @@ module.exports = {
         })
     ),
 
+    getPublicInfo: username => (
+        new Promise(async (resolve, reject) => {
+            try {
+                const user = await User.findOne({ username });
+
+                resolve({
+                    username,
+                    photoUrl: user.photoUrl,
+                    verified: user.verified,
+                    contact: user.contact
+                });
+            } catch(e) {
+                reject({
+                    code: 400,
+                    msg: e.message
+                });
+            }
+        })
+    ),
+
     /* for users */
     getAllPublic: () => (
         new Promise(async (resolve, reject) => {

@@ -5,11 +5,25 @@ const middleware = {
 };
 const controller = require('../controllers/house.controller');
 
-router.get('/all', middleware.auth.verifyToken, async (req, res) => {
+/* admin only */
+router.get('/list', [middleware.auth.verifyToken, middleware.auth.adminOnly], async (req, res) => {
+    try {
+        const houses = await controller.getAll();
+
+        res.status(200).json(houses);
+    } catch(e) {
+        res.status(400).json({
+            message: e.msg
+        });
+    }
+});
+
+/* user only */
+router.get('/list', [middleware.auth.verifyToken, middleware.auth.adminOnly], async (req, res) => {
     try {
         const houses = await controller.getAllOwned(req.token.username);
 
-        res.status(200).json({ houses });
+        res.status(200).json(houses);
     } catch(e) {
         res.status(400).json({
             message: e.msg

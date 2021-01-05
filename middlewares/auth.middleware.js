@@ -41,5 +41,21 @@ module.exports = {
                 message: e.message
             });
         }
+    },
+
+    adminOnly: (req, res, next) => {
+        try {
+            if (req.token.role === 'admin') {
+                return next();
+            }
+
+            res.status(401).json({
+                message: 'unauthorized access'
+            });
+        } catch(e) {
+            res.status(400).json({
+                message: e.message
+            });
+        }
     }
 };

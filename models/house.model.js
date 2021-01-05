@@ -26,7 +26,10 @@ const schema = new mongoose.Schema({
         link: { type: String, required: true }
     }],
 
-    ownerId: { type: mongoose.Types.ObjectId, required: true },
+    owner: {
+        username: { type: String, required: true },
+        id: { type: mongoose.Types.ObjectId, required: true }
+    },
 
     isBooked: Boolean,
     bookingInfo: {

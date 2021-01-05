@@ -41,16 +41,34 @@ module.exports = {
             }
         })
     ),
+    getAll: () => (
+        new Promise(async (resolve, reject) => {
+            try {
+                const houses = await House.find({});
+
+                houses.forEach(h => {
+                    delete h.__v;
+                });
+
+                resolve(houses);
+            } catch(e) {
+                reject({
+                    code: 400,
+                    msg: e.message
+                });
+            }
+        })
+    ),
     getAllOwned: username => (
         new Promise(async (resolve, reject) => {
             try {
                 const owner = await User.findOne({ username });
 
-                const houses = await House.find({ ownerId: owner._id });
+                const houses = await House.find({ owner: { id: owner._id }});
 
                 houses.forEach(h => {
-                    delete h._id;
                     delete h.__v;
+                    delete h.owner.id;
                 });
 
                 resolve(houses);
@@ -73,6 +91,9 @@ module.exports = {
                         msg: 'house not found'
                     });
                 }
+
+                delete payload.isBooked;
+                delete payload.bookingInfo;
 
                 house = { ...payload };
 
