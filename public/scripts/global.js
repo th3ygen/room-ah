@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         easing: "easeOutExpo",
         delay: 1000
     });
-    AOS.init();
 
     /* sticky navbar */
     const navbar = document.querySelector('.top-navbar');

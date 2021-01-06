@@ -88,10 +88,10 @@
                         loop
                         autoplay
                         data-aos="zoom-out"
-                        data-aos-offset="600"
+                        data-aos-offset="400"
                     ></lottie-player>
                 </div>
-                <div class="details" data-aos="fade-up" data-aos-offset="600">
+                <div class="details" data-aos="fade-up" data-aos-offset="400">
                     <div class="heading">Lorem ipsum dolor sit amet</div>
                     <div class="brief">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non tellus vel neque tristique suscipit. Mauris justo leo, sagittis vel aliquam quis, dignissim quis risus.
@@ -99,7 +99,7 @@
                 </div>
             </div>
             <div class="items">
-                <div class="details" data-aos="fade-up" data-aos-offset="600">
+                <div class="details" data-aos="fade-up" data-aos-offset="400">
                     <div class="heading" style="text-align: right !important">Lorem ipsum dolor sit amet</div>
                     <div class="brief">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non tellus vel neque tristique suscipit. Mauris justo leo, sagittis vel aliquam quis, dignissim quis risus.
@@ -114,7 +114,7 @@
                         loop
                         autoplay
                         data-aos="zoom-out"
-                        data-aos-offset="600"
+                        data-aos-offset="400"
                     ></lottie-player>
                 </div>
             </div>
@@ -128,10 +128,10 @@
                         loop
                         autoplay
                         data-aos="zoom-out"
-                        data-aos-offset="600"
+                        data-aos-offset="400"
                     ></lottie-player>
                 </div>
-                <div class="details" data-aos="fade-up" data-aos-offset="600">
+                <div class="details" data-aos="fade-up" data-aos-offset="400">
                     <div class="heading">Lorem ipsum dolor sit amet</div>
                     <div class="brief">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non tellus vel neque tristique suscipit. Mauris justo leo, sagittis vel aliquam quis, dignissim quis risus.
@@ -151,6 +151,45 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     <script src="./scripts/global.js"></script>
-    <script src="./scripts/homepage.js"></script>
+    <script>
+        const SLIDER_HOUSE = price => {
+            return `<li class="splide__slide">
+            <div class="preview-container">
+                <div class="details">
+                    <div class="price">
+                        <div class="discounted">
+                            $${price}
+                        </div>
+                        <div class="origin">
+                            $720
+                        </div>
+                    </div>
+                    <div class="address">
+                        62/1 Braybrooke Street, Bruce
+                    </div>
+                </div>
+                <div class="main-img"></div>
+                <div class="overlay"></div>
+            </div>
+            </li>`;
+        };
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            /* slider content */
+            const housesSlider = document.querySelector('.houses-slide');
+            for(let x = 0; x < 5; x++) {
+                housesSlider.innerHTML += SLIDER_HOUSE(399 + x);
+            }
+        
+            /* init slider */
+            new Splide('.splide', {
+                focus: 'center',
+                perPage: 2,
+                trimSpace: false
+            }).mount();
+
+            AOS.init();
+        } );
+    </script>
 </body>
 </html>

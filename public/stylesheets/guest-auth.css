@@ -1,0 +1,115 @@
+.container {
+  height: calc(100vh - 100px) !important;
+  margin-top: 100px;
+}
+
+.auth-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: fit-content;
+  width: 70%;
+  background-color: #fff;
+  box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.3);
+  display: flex;
+}
+.auth-wrapper > .anim {
+  width: fit-content;
+  height: 100%;
+  background-color: #f4772a;
+}
+.auth-wrapper > .form {
+  position: relative;
+  height: auto;
+  width: 100%;
+}
+.auth-wrapper > .form > .login {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.auth-wrapper > .form > .login > .heading {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+.auth-wrapper > .form > .login > .inputs {
+  position: relative;
+  height: fit-content;
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.auth-wrapper > .form > .login > .inputs > .item {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+}
+.auth-wrapper > .form > .login > .inputs > .item > .icon {
+  height: fit-content;
+  width: fit-content;
+  padding: 8px 0;
+  padding-right: 17px;
+  border-right: 3px solid #f4772a;
+  color: #f4772a;
+}
+.auth-wrapper > .form > .login > .inputs > .item > .input {
+  height: fit-content;
+  width: 100%;
+}
+.auth-wrapper > .form > .login > .inputs > .item > .input > input {
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: rgba(244, 119, 42, 0);
+  font-size: 0.8rem;
+  letter-spacing: 0.07rem;
+  transition: 0.3s all;
+}
+.auth-wrapper > .form > .login > .inputs > .item > .input > input:focus {
+  outline: none;
+  background-color: rgba(244, 119, 42, 0.05);
+}
+.auth-wrapper > .form > .login > .actions {
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+.auth-wrapper > .form > .login > .actions > .btn-submit {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px 50px;
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: #f4772a;
+  border-radius: 25px;
+}
+.auth-wrapper > .form > .login > .actions > .forgot-password {
+  padding: 20px 0;
+  font-size: 0.7rem;
+  color: #afafaf;
+  text-align: center;
+}
+.auth-wrapper > .form > .login > .actions > .forgot-password > .label {
+  padding: 15px 0;
+}
+.auth-wrapper > .form > .login > .actions > .forgot-password > a {
+  padding: 0 5px;
+  font-size: 0.8rem;
+  color: #f4772a;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=guest-auth.css.map */
