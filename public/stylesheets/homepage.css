@@ -1,3 +1,70 @@
+.house-preview {
+  position: relative;
+  width: 100%;
+  /* background-color: #bcbcbc; */
+}
+.house-preview .splide__slide {
+  height: 60vh;
+}
+.house-preview .preview-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.8);
+  opacity: 0.7;
+  display: flex;
+  transition: 0.3s all;
+}
+.house-preview .preview-container > .details {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  height: fit-content;
+  width: fit-content;
+  padding: 30px;
+  padding-right: 50px;
+  background-color: #fff;
+  z-index: 3;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.house-preview .preview-container > .details > .price {
+  font-size: 1.5rem;
+  color: #13957f;
+  margin-bottom: 20px;
+}
+.house-preview .preview-container > .details > .price > .origin {
+  font-size: 0.8rem;
+  text-decoration: line-through;
+  color: #bcbcbc;
+}
+.house-preview .preview-container > .main-img {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-image: url("https://preview.colorlib.com/theme/homey/images/property_1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-self: center;
+  transition: 0.3s all;
+  z-index: 1;
+}
+.house-preview .preview-container > .overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+.house-preview .splide__slide.is-active .preview-container {
+  transform: scale(1);
+  opacity: 1;
+}
 
+.features {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
 
 /*# sourceMappingURL=homepage.css.map */
