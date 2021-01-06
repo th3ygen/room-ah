@@ -18,7 +18,7 @@ const SLIDER_HOUSE = price => {
         <div class="overlay"></div>
     </div>
     </li>`;
-}
+};
 
 document.addEventListener('DOMContentLoaded', function () {
     /* slider content */

@@ -7,48 +7,61 @@
 
     <!-- dependencies -->
     <link rel="stylesheet" href="./libs/splide/css/splide.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <link rel="stylesheet" href="./stylesheets/global.css">
     <link rel="stylesheet" href="./stylesheets/homepage.css">
 </head>
 <body>
-    <div class="container">
-        <div class="top-navbar">
-            <div class="logo">
-                Room-
-                <span style="color: #f4772a">Ah!</span>
+    <div class="loading-screen-container">
+        <div class="loading-screen">
+            <div class="text">
+                <h1 class="ml11">
+                    <span class="text-wrapper">
+                      <span class="line line1"></span>
+                      <span class="letters">Please wait</span>
+                    </span>
+                  </h1>
             </div>
-            <div class="nav-items">
-                <div class="item">
-                    <span>Home</span>
-                </div>
-                <div class="item">
-                    <span>Dropdown</span>
-                </div>
-                <div class="item">
-                    <span>Buy</span>
-                </div>
-                <div class="item">
-                    <span>Rent</span>
-                </div>
-                <div class="item">
-                    <span>About</span>
-                </div>
-                <div class="item">
-                    <span>Contact Us</span>
-                </div>
-            </div>
+        </div>
+    </div>
 
-            <div class="authoriz">
-                <div class="item">
-                    <span>Sign up</span>
-                </div>
-                <div class="item login">
-                    <span>Login</span>
-                </div>
+    <div class="top-navbar">
+        <div class="logo">
+            Room-
+            <span style="color: #f4772a">Ah!</span>
+        </div>
+        <div class="nav-items">
+            <div class="item">
+                <span>Home</span>
+            </div>
+            <div class="item">
+                <span>Buy</span>
+            </div>
+            <div class="item">
+                <span>Rent</span>
+            </div>
+            <div class="item">
+                <span>Verified owners</span>
+            </div>
+            <div class="item">
+                <span>About</span>
+            </div>
+            <div class="item">
+                <span>Contact Us</span>
             </div>
         </div>
 
+        <div class="authoriz">
+            <div class="item">
+                <span>Sign up</span>
+            </div>
+            <div class="item login">
+                <span>Login</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <div class="house-preview">
             <div class="splide">
                 <div class="splide__track">
@@ -58,11 +71,84 @@
                 </div>
             </div>
         </div>
+        
+        <div class="features">
+            <div class="heading">
+                <span>We will help you find your home</span>
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dignissim diam non hendrerit euismod. </span>
+            </div>
 
-        <div class="features"></div>
+            <div class="items">
+                <div class="anim">
+                    <lottie-player
+                        src="./svg/Blogging Animation/Blogging - Colour/Blogging Colored.json" 
+                        background="transparent"
+                        speed="1"
+                        style="width: 500px; height: 500px;"
+                        loop
+                        autoplay
+                        data-aos="zoom-out"
+                        data-aos-offset="600"
+                    ></lottie-player>
+                </div>
+                <div class="details" data-aos="fade-up" data-aos-offset="600">
+                    <div class="heading">Lorem ipsum dolor sit amet</div>
+                    <div class="brief">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non tellus vel neque tristique suscipit. Mauris justo leo, sagittis vel aliquam quis, dignissim quis risus.
+                    </div>
+                </div>
+            </div>
+            <div class="items">
+                <div class="details" data-aos="fade-up" data-aos-offset="600">
+                    <div class="heading" style="text-align: right !important">Lorem ipsum dolor sit amet</div>
+                    <div class="brief">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non tellus vel neque tristique suscipit. Mauris justo leo, sagittis vel aliquam quis, dignissim quis risus.
+                    </div>
+                </div>
+                <div class="anim">
+                    <lottie-player
+                        src="./svg/Security Animation/Security Coloured/Security Colored Revised.json" 
+                        background="transparent"
+                        speed="1"
+                        style="width: 500px; height: 500px;"
+                        loop
+                        autoplay
+                        data-aos="zoom-out"
+                        data-aos-offset="600"
+                    ></lottie-player>
+                </div>
+            </div>
+            <div class="items">
+                <div class="anim">
+                    <lottie-player
+                        src="./svg/Growth Animation/Growth Coloured/Growth Animation.json" 
+                        background="transparent"
+                        speed="1"
+                        style="width: 500px; height: 500px;"
+                        loop
+                        autoplay
+                        data-aos="zoom-out"
+                        data-aos-offset="600"
+                    ></lottie-player>
+                </div>
+                <div class="details" data-aos="fade-up" data-aos-offset="600">
+                    <div class="heading">Lorem ipsum dolor sit amet</div>
+                    <div class="brief">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non tellus vel neque tristique suscipit. Mauris justo leo, sagittis vel aliquam quis, dignissim quis risus.
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <footer>
+        <div class="footer-content">
 
+        </div>
+    </footer>
     <script src="./libs/splide/js/splide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     <script src="./scripts/global.js"></script>
     <script src="./scripts/homepage.js"></script>

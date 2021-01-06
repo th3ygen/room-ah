@@ -1,6 +1,7 @@
 .house-preview {
     position: relative;
 
+    height: 80vh;
     width: 100%;
 
     /* background-color: #bcbcbc; */
@@ -42,6 +43,7 @@
             & > .price {
                 font-size: 1.5rem;
                 color: #13957f;
+                font-weight: bold;
 
                 margin-bottom: 20px;
 
@@ -96,6 +98,80 @@
 .features {
     position: relative;
 
-    height: 100vh;
+    height: fit-content;
     width: 100%;
+
+    margin: 50px 0;
+
+    & > .heading {
+        font-size: .85rem;
+
+        text-align: center;
+        & > span {
+
+            &:nth-child(1) {
+                display: block;
+
+                margin: 15px 0;
+    
+                font-size: 1.5rem;
+                color: #13957f;
+            }
+            &:nth-child(2) {
+                display: block;
+
+                width: 500px;
+
+                margin: 0 auto;
+
+                line-height: 25px;
+                color: #afafaf;
+            }
+            
+        }
+    }
+
+    & > .items {
+        position: relative;
+
+        height: auto;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+
+        & > .anim {
+            position: relative;
+
+            padding: 20px 80px;
+            width: fit-content;
+            height: fit-content;
+        }
+
+        & > .details {
+            position: relative;
+
+            height: auto;
+            width: 30%;
+            min-width: 300px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            & > .heading {
+                width: 100%;
+                font-size: 1.5rem;
+                padding: 15px 0;
+                color: #13957f;
+            }
+
+            & > .brief {
+                font-size: 1rem;
+                color: #929392;
+                line-height: 30px;
+                text-align: justify;
+            }
+        }
+    }
 }
