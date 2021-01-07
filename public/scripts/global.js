@@ -4,9 +4,9 @@ const utils = {
             setTimeout(() => resolve(), ms);
         })
     )
-}
+};
 
-document.addEventListener('DOMContentLoaded', async () => {
+window.onload = async () => {
     /* loading screen */
     const loadingTextWrapper = document.querySelector('.ml11 .letters');
     loadingTextWrapper.innerHTML = loadingTextWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
 
     /* close loading screen */
-    await utils.sleep(1000);
+    await utils.sleep(300);
     document.querySelector('.loading-screen-container').setAttribute('style', 'left: -100vw');
-});
+};
 

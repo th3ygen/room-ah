@@ -73,7 +73,6 @@
   border: none;
   background-color: rgba(244, 119, 42, 0);
   font-size: 0.8rem;
-  letter-spacing: 0.07rem;
   transition: 0.3s all;
 }
 .auth-wrapper > .form > .login > .inputs > .item > .input > input:focus {

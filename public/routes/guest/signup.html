@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room-ah! - Buy</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="../../stylesheets/global.css">
+    <link rel="stylesheet" href="../../stylesheets/guest-signup.css">
+</head>
+<body>
+    <div class="loading-screen-container">
+        <div class="loading-screen">
+            <div class="text">
+                <h1 class="ml11">
+                    <span class="text-wrapper">
+                      <span class="line line1"></span>
+                      <span class="letters">Please wait</span>
+                    </span>
+                  </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="top-navbar">
+        <div class="logo">
+            Room-
+            <span style="color: #f4772a">Ah!</span>
+        </div>
+        <div class="nav-items">
+            <div class="item">
+                <span>Home</span>
+            </div>
+            <div class="item">
+                <span>Buy</span>
+            </div>
+            <div class="item">
+                <span>Rent</span>
+            </div>
+            <div class="item">
+                <span>Verified owners</span>
+            </div>
+            <div class="item">
+                <span>About</span>
+            </div>
+            <div class="item">
+                <span>Contact Us</span>
+            </div>
+        </div>
+
+        <div class="authoriz">
+            <div class="item">
+                <span>Sign up</span>
+            </div>
+            <div class="item login">
+                <span>Login</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="brief">
+            <div class="heading">
+                Create an account
+            </div>
+            <div class="longtext">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non tellus vel neque tristique suscipit. Mauris justo leo, sagittis vel aliquam quis, dignissim quis risus.
+                Mauris justo leo, sagittis vel aliquam quis, dignissim quis risus.
+            </div>
+            <div class="have-account">
+                <span>Already have an account?</span>
+                <div class="btn-login">Login</div>
+            </div>
+        </div>
+        <div class="signup-wrapper">
+            <div class="inputs">
+                <div class="item">
+                    <div class="label">Username</div>
+                    <div class="input">
+                        <input type="text" name="" id="">
+                        <div class="validation-feedback">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">Email</div>
+                    <div class="input">
+                        <input type="email" name="" id="">
+                        <div class="validation-feedback">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">Phone number</div>
+                    <div class="input">
+                        <input type="text" name="" id="">
+                        <div class="validation-feedback">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">Password</div>
+                    <div class="input">
+                        <input type="password" name="" id="">
+                        <div class="validation-feedback">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">Confirm password</div>
+                    <div class="input">
+                        <input type="password" name="" id="">
+                        <div class="validation-feedback error">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="btn-submit disabled">
+                    Register
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script defer src="../../scripts/global.js"></script>
+    <script defer>
+        const sleep = ms => (
+            new Promise((resolve, reject) => {
+                setTimeout(() => resolve(), ms);
+            })
+        );
+        (async () => {
+            await sleep(1000);
+            document.querySelector('.input').classList.add('success');
+            await sleep(1000);
+            document.querySelector('.input').classList.remove('success');
+            document.querySelector('.input').classList.add('error');
+        })();
+    </script>
+</body>
+</html>

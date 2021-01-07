@@ -30,6 +30,11 @@ html, body {
     width: 100%;
 }
 
+/* inputs */
+input[type="text"], input[type="password"] {
+    letter-spacing: .07rem;
+}
+
 .loading-screen-container {
     position: fixed;
     top: 0;
@@ -169,6 +174,8 @@ html, body {
             position: relative;
 
             padding: 10px 25px;
+
+            cursor: pointer;
         }
 
         & > .login {

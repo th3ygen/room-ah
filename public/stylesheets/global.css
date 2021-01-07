@@ -24,6 +24,11 @@ html, body {
   width: 100%;
 }
 
+/* inputs */
+input[type=text], input[type=password] {
+  letter-spacing: 0.07rem;
+}
+
 .loading-screen-container {
   position: fixed;
   top: 0;
@@ -129,6 +134,7 @@ html, body {
 .top-navbar > .authoriz > div {
   position: relative;
   padding: 10px 25px;
+  cursor: pointer;
 }
 .top-navbar > .authoriz > .login {
   color: white;
