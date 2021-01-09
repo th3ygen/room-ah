@@ -1,0 +1,96 @@
+.brief {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  margin-bottom: 100px;
+}
+.brief > .heading {
+  font-size: 2rem;
+  color: #f4772a;
+  text-align: center;
+}
+.brief > .longtext {
+  width: 50%;
+  margin: 15px auto;
+  font-size: 0.9rem;
+  color: #afafaf;
+  text-align: center;
+  line-height: 1.5rem;
+}
+
+.houses {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 10%;
+  background-color: #f7f7f7;
+}
+.houses > .house {
+  position: relative;
+  height: fit-content;
+  width: 33%;
+  flex: 1 1 33%;
+  padding: 30px 0;
+}
+.houses > .house > .image {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 200px;
+  width: 350px;
+  margin: 0 auto;
+  background-image: url("https://www.interorossmoor.com/assets/images/no-image-found.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.houses > .house > .details {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 150px;
+  height: fit-content;
+  width: 300px;
+  background-color: #fff;
+  z-index: 2;
+  padding: 15px 25px;
+  box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.1);
+}
+.houses > .house > .details > .price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #13957f;
+  display: flex;
+}
+.houses > .house > .details > .attr {
+  display: flex;
+  font-size: 0.9rem;
+  padding: 20px 0;
+}
+.houses > .house > .details > .attr > .item {
+  display: flex;
+  padding-right: 20px;
+}
+.houses > .house > .details > .attr > .item > .icon {
+  color: #afafaf;
+  padding-right: 5px;
+}
+.houses > .house > .details > .address {
+  color: #afafaf;
+  font-size: 0.8rem;
+}
+.houses > .house > .details > .actions {
+  padding-top: 50px;
+  width: 100%;
+}
+.houses > .house > .details > .actions > .proceed {
+  width: fit-content;
+  padding: 10px 25px;
+  background-color: #13957f;
+  color: white;
+  margin-left: auto;
+}
+
+/*# sourceMappingURL=guest-buy.css.map */
