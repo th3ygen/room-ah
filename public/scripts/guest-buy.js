@@ -1,6 +1,6 @@
 const housesElem = document.querySelector('.houses');
 
-const house = (imageUrl, price) => (`
+const createHouse = (imageUrl, price) => (`
 <div class="house">
     <div class="image" style="background-image: url('${imageUrl}');"></div>
     <div class="details">
@@ -65,9 +65,9 @@ for(let x = 0; x < 10; x++) {
     const str = putComma(val);
 
     if (Math.round(rnd(0, 10)) < 5) {
-        housesElem.innerHTML += house('https://preview.colorlib.com/theme/homey/images/property_1.jpg', str);
+        housesElem.innerHTML += createHouse('https://preview.colorlib.com/theme/homey/images/property_1.jpg', str);
     } else {
-        housesElem.innerHTML += house('https://www.interorossmoor.com/assets/images/no-image-found.png', str);
+        housesElem.innerHTML += createHouse('https://www.interorossmoor.com/assets/images/no-image-found.png', str);
     }
 
 }
