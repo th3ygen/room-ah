@@ -1,3 +1,78 @@
-
+.logged-in-content {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+}
+.logged-in-content > .heading {
+  padding: 25px 15px;
+  padding-top: 0;
+  font-size: 1.3rem;
+  color: #afafae;
+}
+.logged-in-content > .content {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+}
+.logged-in-content > .content > .list {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.logged-in-content > .content > .list > .item {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.logged-in-content > .content > .list > .item > .brief {
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  gap: 20px;
+}
+.logged-in-content > .content > .list > .item > .brief > .img {
+  height: 150px;
+  width: 200px;
+  background-image: url("https://preview.colorlib.com/theme/homey/images/property_1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+}
+.logged-in-content > .content > .list > .item > .brief > .details {
+  height: fit-content;
+  width: fit-content;
+  max-height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+}
+.logged-in-content > .content > .list > .item > .brief > .details > .item {
+  display: flex;
+  gap: 10px;
+  height: fit-content;
+  width: 100%;
+}
+.logged-in-content > .content > .list > .item > .brief > .details > .item > .label {
+  width: 30%;
+  color: #afafae;
+  font-size: 0.8rem;
+}
+.logged-in-content > .content > .list > .item > .brief > .details > .item > .value {
+  font-size: 0.85rem;
+  color: #fc742b;
+}
 
 /*# sourceMappingURL=dashboard.css.map */

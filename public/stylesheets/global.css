@@ -234,9 +234,11 @@ input[type=text], input[type=password] {
 .logged-in-container {
   position: relative;
   height: fit-content;
+  min-height: 100vh;
   width: calc(100% - 250px);
   margin-left: 250px;
   padding: 0 40px;
+  background-color: #f6f6f7;
 }
 .logged-in-container::after {
   content: "";
@@ -259,7 +261,7 @@ input[type=text], input[type=password] {
   height: fit-content;
   width: 100%;
   padding: 35px 15px;
-  color: #afafae;
+  color: #fc742b;
   display: flex;
   justify-content: space-between;
   z-index: 3;
@@ -287,14 +289,14 @@ input[type=text], input[type=password] {
 }
 .logged-in-topbar > .tools > .tool.input > input {
   padding: 8px 13px;
-  border: 1px solid #afafaebb;
+  border: 1px solid #fc742b;
   border-right: none;
   border-radius: 6px 0 0 6px;
   color: #afafaebb;
   background-color: rgba(255, 255, 255, 0.3);
 }
 .logged-in-topbar > .tools > .tool.input > input::placeholder {
-  color: #afafaebb;
+  color: #fc742b;
 }
 .logged-in-topbar > .tools > .tool.input > input:focus {
   outline: none;
@@ -302,7 +304,7 @@ input[type=text], input[type=password] {
 .logged-in-topbar > .tools > .tool.input > .submit {
   height: auto;
   padding: 0 10px;
-  background-color: #afafaebb;
+  background-color: #fc742b;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -331,8 +333,7 @@ input[type=text], input[type=password] {
   background-color: #fc742b;
   box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.15);
   opacity: 0;
-  user-select: none;
-  transition: 1s all;
+  display: none;
 }
 .logged-in-topbar > .tools > .tool.icon > .popup::before {
   content: "";
@@ -347,7 +348,7 @@ input[type=text], input[type=password] {
 }
 .logged-in-topbar > .tools > .tool.icon > .popup.active {
   opacity: 1;
-  user-select: initial;
+  display: block;
 }
 .logged-in-topbar > .tools > .tool.icon > .popup > .items {
   position: relative;
@@ -390,10 +391,11 @@ input[type=text], input[type=password] {
   transition: 0.5s all;
 }
 .logged-in-topbar > .tools > .tool.icon > .popup > .items > .item > .options > .option {
-  padding: 15px;
+  padding: 15px 30px;
   height: 100%;
   cursor: pointer;
   transition: 0.3s all;
+  color: #ffccb0;
 }
 .logged-in-topbar > .tools > .tool.icon > .popup > .items > .item > .options > .option:hover {
   color: #fc742b;
@@ -423,17 +425,6 @@ input[type=text], input[type=password] {
 }
 .logged-in-topbar > .tools > .tool.icon > .popup > .items > .item:nth-last-child(1) {
   border-bottom: none;
-}
-
-.logged-in-content {
-  position: relative;
-  height: 300px;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 5px;
-  margin-bottom: 30px;
-  box-shadow: 2px 1px 5px 0px rgba(0, 0, 0, 0.15);
-  opacity: 0.7;
 }
 
 footer {
