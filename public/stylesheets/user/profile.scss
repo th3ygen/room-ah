@@ -1,0 +1,195 @@
+.logged-in-content {
+    position: relative;
+
+    height: fit-content;
+    width: 100%;
+
+    background-color:#fff;
+
+    border-radius: 5px;
+
+    padding: 25px;
+    padding-bottom: 30px;
+
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, .25);
+
+    & > .heading {
+        padding: 25px 15px;
+        padding-top: 0;
+        color: #afafae;
+        font-size: 1.3rem;
+    }
+
+    & > .content {
+        position: relative;
+
+        height: fit-content;
+        width: 100%;
+
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    & > .content > .items {
+        position: relative;
+
+        height: fit-content;
+        width: fit-content;
+        min-width: 200px;
+        
+        margin: 30px 60px;
+
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 calc(50% - 120px);
+        gap: 30px;
+
+        & > .item {
+            position: relative;
+
+            height: fit-content;
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            & > .label {
+                font-size: .9rem;
+                color: #afafae;
+            }
+            & > .value {
+                position: relative;
+
+                height: fit-content;
+                width: 100%;
+
+                display: flex;
+                gap: 10px;
+
+                & > input, select {
+                    width: 100%;
+
+                    font-size: 1rem;
+                    color: #fc732d;
+
+                    padding: 0;
+
+                    border: none;
+                    border-bottom: 1px solid #a5a5a5;
+
+                    transition: .3s all;
+
+                    &:disabled {
+                        background-color: #fff;
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+
+                &.edit > input {
+                    font-size: 1.1rem;
+                    border-bottom: 1px solid #fc732d;
+                }
+
+                & > .btn-edit, .btn-save, .btn-del, .btn-undo {
+                    display: none;
+
+                    padding: 5px;
+
+                    color: #afafae;
+                    cursor: pointer;
+                    &:hover {
+                        color: #fc732d;
+                    }
+
+                    &.visible {
+                        display: block;
+                    }
+                }
+            }
+            & > .photo {
+                position: relative;
+
+                width: 100%;
+                height: 200px;
+
+                display: flex;
+                gap: 10px;
+
+                & > .img {
+                    position: relative;
+
+                    height: 100%;
+                    width: 200px;
+
+                    background-image: url('');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+
+                    overflow: hidden;
+
+                    &:hover > .actions {
+                        transform: translateY(0%);
+                        background-color: rgba(0, 0, 0, 0.233);
+                    }
+                }
+
+                & > .img > .actions {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    transform: translateY(100%);
+
+                    width: 100%;
+                    height: 100%;
+
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px;
+
+                    background-color: rgba(0, 0, 0, 0);
+
+                    transition: .3s all;
+
+                    & > .action {
+                        margin-top: auto;
+
+                        height: fit-content;
+                        width: fit-content;
+
+                        padding: 10px 25px;
+                        background-color: #f6f6f6;
+                        color: #fc732d;
+                        border-radius: 8px;
+                        font-size: .8rem;
+                        cursor: pointer;
+
+                        
+                    }
+                }
+            }
+            & > .others-add {
+                position: relative;
+
+                height: fit-content;
+                width: fit-content;
+
+                padding: 7px 20px;
+
+                font-size: .9rem;
+
+                background-color: #ebebeb;
+                color: #fc732d;
+
+                border-radius: 5px;
+
+                cursor: pointer;
+            }
+        }
+    }
+}

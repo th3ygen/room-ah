@@ -39,8 +39,8 @@ const schema = new mongoose.Schema({
 
     bankDetails: {
         name: { type: String, required: true }, 
-        accountNum: { type: String, required: true },
-        bankName: { type: String, required: true }
+        bankName: { type: String, required: true },
+        accountNum: { type: String, required: true }
     },
 
     houses: [mongoose.Types.ObjectId],

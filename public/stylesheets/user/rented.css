@@ -5,7 +5,6 @@
   background-color: #fff;
   border-radius: 5px;
   padding: 25px;
-  margin-bottom: 30px;
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
 }
 .logged-in-content > .heading {
@@ -25,7 +24,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 80px;
 }
 .logged-in-content > .content > .list > .item {
   position: relative;
@@ -39,12 +38,12 @@
   height: fit-content;
   width: fit-content;
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 .logged-in-content > .content > .list > .item > .brief > .img {
   height: 150px;
   width: 200px;
-  background-image: url("https://preview.colorlib.com/theme/homey/images/property_1.jpg");
+  background-image: url("https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?b=1&k=6&m=1223671392&s=612x612&w=0&h=5VMcL3a_1Ni5rRHX0LkaA25lD_0vkhFsb1iVm1HKVSQ=");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -57,6 +56,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-right: 30px;
   overflow-y: scroll;
 }
 .logged-in-content > .content > .list > .item > .brief > .details > .item {
@@ -108,14 +108,14 @@
   min-width: 60px;
   padding: 10px 20px;
   background-color: greenyellow;
-  border-bottom: 3px solid #fc742b00;
+  border: 3px solid #ffffff;
   transition: 0.3s all;
   text-align: center;
   font-size: 0.7rem;
   user-select: none;
 }
 .logged-in-content > .content > .list > .item > .stats > .payments > .display > div:hover {
-  border-bottom: 3px solid #fc742b;
+  /* border-bottom: 3px solid #fc742b; */
 }
 .logged-in-content > .content > .list > .item > .stats > .payments > .display > div:hover > .value {
   opacity: 1;

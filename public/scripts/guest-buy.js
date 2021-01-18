@@ -40,29 +40,11 @@ const createHouse = (imageUrl, price) => (`
     
 </div>`);
 
-const rnd = (min, max) => {
-    return Math.random() * (max - min) + min;
-};
-
-const putComma = value => {
-    let d = 1;
-    let res = [];
-    const chars = value.toString().split('').reverse();
-
-    for(const c of chars) {
-        res.push(c);
-        if (d % 3 === 0 && d !== chars.length) {
-            res.push(',');
-        }
-        d++;
-    }
-
-    return res.reverse().join('');
-};
+const 
 
 for(let x = 0; x < 10; x++) {
-    const val = Math.round(rnd(420000, 9969696));
-    const str = putComma(val);
+    const val = Math.round(utils.rnd(420000, 9969696));
+    const str = utils.putComma(val);
 
     if (Math.round(rnd(0, 10)) < 5) {
         housesElem.innerHTML += createHouse('https://preview.colorlib.com/theme/homey/images/property_1.jpg', str);

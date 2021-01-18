@@ -40,7 +40,7 @@ input[type=text], input[type=password] {
   height: 100vh;
   width: 100%;
   background-color: #fff;
-  z-index: 101;
+  z-index: 999;
   transition: 1s all;
   box-shadow: 1px 1px 50px 5px rgba(0, 0, 0, 0.25);
 }
@@ -80,6 +80,24 @@ input[type=text], input[type=password] {
 .loading-screen-container > .loading-screen > .text .ml11 .letter {
   display: inline-block;
   line-height: 1em;
+}
+
+.cards {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.cards > .card {
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
 }
 
 .container {
@@ -254,6 +272,16 @@ input[type=text], input[type=password] {
   background-attachment: fixed;
   background-size: cover; */
   /* background by SVGBackgrounds.com */
+}
+
+.logged-in-contents {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 50px 0;
 }
 
 .logged-in-topbar {
@@ -442,6 +470,50 @@ footer > .footer-content {
   height: fit-content;
   min-height: 50vh;
   width: 100%;
+}
+
+.empty {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  filter: grayscale(1);
+  opacity: 0.5;
+  display: none;
+}
+.empty.visible {
+  display: block;
+}
+.empty > .svg {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 150px;
+  width: 170px;
+  background-image: url("../svg/no_data_undraw.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.empty > .text {
+  position: absolute;
+  top: calc(50% + 100px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: fit-content;
+  width: fit-content;
+  font-size: 1.1rem;
+  color: #797979;
+}
+.empty > .hint {
+  position: absolute;
+  top: calc(50% + 120px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: fit-content;
+  width: fit-content;
+  font-size: 0.65rem;
+  color: #797979;
 }
 
 /* width */
