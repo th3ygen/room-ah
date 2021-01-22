@@ -3,18 +3,31 @@ const validator = require('validator').default;
 
 const User = mongoose.model('User');
 
-module.exports = {
-    getInfo: username => (
+const controller = {
+    getInfo: u => (
         new Promise(async (resolve, reject) => {
             try {
-                const user = await User.findOne({ username });
+                const user = await User.findOne({ username: u });
 
-                delete user._id;
-                delete user.__v;
-                delete user.password;
-                delete user.houses;
+                const {
+                    username,
+                    photoUrl,
+                    verified,
+                    contact,
+                    mailAddress,
+                    bankDetails,
+                    fullname
+                } = user;
 
-                resolve(user);
+                resolve({
+                    username,
+                    photoUrl,
+                    verified,
+                    contact,
+                    mailAddress,
+                    bankDetails,
+                    fullname
+                });
             } catch(e) {
                 reject({
                     code: 400,
@@ -97,7 +110,7 @@ module.exports = {
                     }
                 }
 
-                if (payload.contact) {
+                /* if (payload.contact) {
                     if (payload.contact.phoneNum) {
                         if (validator.isMobilePhone(payload.contact.phoneNum)) {
                             throw new Error('invalid phone number');
@@ -105,16 +118,62 @@ module.exports = {
                     }
                     if (payload.contact.email) {
                         if (validator.isEmail(payload.contact.email)) {
-                            throw new Error('invalid phone number');
+                            throw new Error('invalid email');
+                        }
+                    }
+                } */
+
+                let user = await User.findOne({ username: username });
+
+                if (payload.contact) {
+                    if (!payload.contact.email) {
+                        payload = {
+                            contact: {
+                                phoneNum: payload.contact.phoneNum,
+                                email: user.contact.email
+                            }
+                        }
+                    }
+                    if (!payload.contact.phoneNum) {
+                        payload = {
+                            contact: {
+                                phoneNum: user.contact.phoneNum,
+                                email: payload.contact.email
+                            }
+                        }
+                    }
+                }
+                if (payload.bankDetails) {
+                    if (payload.bankDetails.name) {
+                        payload = {
+                            bankDetails: {
+                                name: payload.bankDetails.name, 
+                                bankName: user.bankDetails.bankName,
+                                accountNum: user.bankDetails.accountNum
+                            }
+                        }
+                    }
+                    if (payload.bankDetails.bankName) {
+                        payload = {
+                            bankDetails: {
+                                name: user.bankDetails.name, 
+                                bankName: payload.bankDetails.bankName,
+                                accountNum: user.bankDetails.accountNum
+                            }
+                        }
+                    }
+                    if (payload.bankDetails.accountNum) {
+                        payload = {
+                            bankDetails: {
+                                name: user.bankDetails.name, 
+                                bankName: user.bankDetails.bankName,
+                                accountNum: payload.bankDetails.accountNum
+                            }
                         }
                     }
                 }
 
-                const user = await User.findOne({ username: username });
-
-                user = {
-                    ...payload
-                };
+                Object.assign(user, payload);
 
                 await user.save();
 
@@ -123,6 +182,7 @@ module.exports = {
 
                 resolve(user);
             } catch(e) {
+                console.log(e);
                 reject({
                     code: 400,
                     msg: e.message
@@ -142,10 +202,12 @@ module.exports = {
                 delete payload.securityQuestions;
                 delete payload.houses;
 
-                const user = await this.update(username, payload);
-
+                const user = await controller.update(username, payload);
                 resolve(user);
+
+                
             } catch(e) {
+                console.log(e);
                 reject({
                     code: 400,
                     msg: e.message
@@ -169,3 +231,5 @@ module.exports = {
         })
     )
 };
+
+module.exports = controller;

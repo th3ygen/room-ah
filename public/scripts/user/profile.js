@@ -21,11 +21,55 @@ const createOtherDoc = items => {
 };
 
 (async () => {
-    await pageload();
+    const userData = await pagedataload();
 
     const photoElement = document.querySelector('.photo > .img');
 
-    photoElement.style.backgroundImage = 'url("https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/4af3e5d8-3352-49bd-9570-de2aef8972b9/eric-bailey-profile.jpg")';
+    const fullname = document.querySelector('#fullname');
+    const email = document.querySelector('#email');
+    const phone = document.querySelector('#phone');
+    const bankHolderName = document.querySelector('#bankHolderName');
+    const bankName = document.querySelector('#bankName');
+    const bankAccNumber = document.querySelector('#bankAccNumber');
+    const photoEdit = document.querySelector('#photoEdit');
+    const photoRemove = document.querySelector('#photoRemove');
+
+    photoEdit.onclick = async () => {
+        const newUrl = window.prompt('Enter image URL', '');
+
+        try {
+            await $.
+        }
+    };
+
+    if (userData.fullname) {
+        fullname.value = userData.fullname;
+    } else {
+        fullname.value = '';
+    }
+
+    email.value = userData.contact.email;
+    phone.value = userData.contact.phoneNum;
+    
+    if (userData.bankDetails.name) {
+        bankHolderName.value = userData.bankDetails.name;
+    } else {
+        bankHolderName.value = '';
+    }
+    if (userData.bankDetails.bankName) {
+        bankName.value = userData.bankDetails.bankName;
+    } else {
+        bankName.value = '';
+    }
+    if (userData.bankDetails.accountNum) {
+        bankAccNumber.value = userData.bankDetails.accountNum;
+    } else {
+        bankAccNumber.value = '';
+    }
+
+    if (userData.photoUrl) {
+        photoElement.style.backgroundImage = `url("${userData.photoUrl}")`;
+    }
 
     const editBtns = document.querySelectorAll('.btn-edit');
     const saveBtns = document.querySelectorAll('.btn-save');
@@ -70,21 +114,133 @@ const createOtherDoc = items => {
             };
         };
     }
-    for (const saveBtn of saveBtns) {
-        saveBtn.onclick = () => {
+    for await (const saveBtn of saveBtns) {
+        saveBtn.onclick = async () => {
             const p = saveBtn.parentElement;
 
-            saveBtn.classList.remove('visible')
-            p.querySelector('.btn-edit').classList.add('visible');
-            try {
-                p.querySelector('.btn-del').classList.remove('visible');
-            } catch(e) {}
-            try {
-                p.querySelector('.btn-undo').classList.remove('visible');
-            } catch(e) {}
-
-            p.querySelector('input, select').disabled = true;
-            p.classList.remove('edit');
+            switch(p.dataset.label) {
+                case 'fullname':
+                    try {
+                        await $.ajax({
+                            url: '/api/user/update',
+                            type: 'post',
+                            data: JSON.stringify({
+                                payload: {
+                                    fullname: fullname.value
+                                }
+                            }),
+                            headers: {
+                                'auth-token': `Token ${localStorage.getItem('token')}`
+                            },
+                            contentType: 'application/json',
+                            dataType: 'json'
+                        });
+                        
+                    } catch(e) {
+                        alert('Update failure');
+                    }
+                    
+                    break;
+                case 'email':
+                    try {
+                        await $.ajax({
+                            url: '/api/user/update',
+                            type: 'post',
+                            data: JSON.stringify({
+                                payload: {
+                                    contact: {
+                                        email: email.value
+                                    }
+                                }
+                            }),
+                            headers: {
+                                'auth-token': `Token ${localStorage.getItem('token')}`
+                            },
+                            contentType: 'application/json',
+                            dataType: 'json'
+                        });
+                        
+                    } catch(e) {
+                        alert('Update failure');
+                    }
+                    
+                    break;
+                case 'phone':
+                case 'bankHolderName':
+                    try {
+                        await $.ajax({
+                            url: '/api/user/update',
+                            type: 'post',
+                            data: JSON.stringify({
+                                payload: {
+                                    bankDetails: {
+                                        name: bankHolderName.value
+                                    }
+                                }
+                            }),
+                            headers: {
+                                'auth-token': `Token ${localStorage.getItem('token')}`
+                            },
+                            contentType: 'application/json',
+                            dataType: 'json'
+                        });
+                        
+                    } catch(e) {
+                        alert('Update failure');
+                    }
+                    
+                    break;
+                case 'bankName':
+                    try {
+                        await $.ajax({
+                            url: '/api/user/update',
+                            type: 'post',
+                            data: JSON.stringify({
+                                payload: {
+                                    bankDetails: {
+                                        bankName: bankName.value
+                                    }
+                                }
+                            }),
+                            headers: {
+                                'auth-token': `Token ${localStorage.getItem('token')}`
+                            },
+                            contentType: 'application/json',
+                            dataType: 'json'
+                        });
+                        
+                    } catch(e) {
+                        alert('Update failure');
+                    }
+                    
+                    break;
+                case 'bankAccNumber':
+                    try {
+                        await $.ajax({
+                            url: '/api/user/update',
+                            type: 'post',
+                            data: JSON.stringify({
+                                payload: {
+                                    bankDetails: {
+                                        accountNum: bankAccNumber.value
+                                    }
+                                }
+                            }),
+                            headers: {
+                                'auth-token': `Token ${localStorage.getItem('token')}`
+                            },
+                            contentType: 'application/json',
+                            dataType: 'json'
+                        });
+                        
+                    } catch(e) {
+                        alert('Update failure');
+                    }
+                    
+                    break;
+                default: break;
+            }
+            window.location.reload();
         };
     }
     for (const delBtn of delBtns) {
@@ -93,55 +249,5 @@ const createOtherDoc = items => {
         };
     }
 
-    let x = 0;
-    addBtn.onclick = () => {
-        const newDocStr = createOtherDoc(['test' + x++]);
-        const div = document.createElement('div');
 
-        div.innerHTML = newDocStr.trim();
-
-        const p = div.firstChild;
-
-        const editBtn = p.querySelector('.btn-edit');
-        const saveBtn = p.querySelector('.btn-save');
-        const delBtn = p.querySelector('.btn-del');
-
-        editBtn.onclick =  () => {
-            const p = editBtn.parentElement;
-
-            editBtn.classList.remove('visible')
-            p.querySelector('.btn-save').classList.add('visible');
-            try {
-                p.querySelector('.btn-del').classList.add('visible');
-            } catch(e) {}
-            try {
-                p.querySelector('.btn-undo').classList.add('visible');
-            } catch(e) {}
-
-            p.querySelector('input, select').disabled = false;
-            p.classList.add('edit');
-        };
-
-        saveBtn.onclick = () => {
-            const p = saveBtn.parentElement;
-
-            saveBtn.classList.remove('visible')
-            p.querySelector('.btn-del').classList.remove('visible');
-            try {
-                p.querySelector('.btn-edit').classList.add('visible');
-            } catch(e) {}
-            try {
-                p.querySelector('.btn-undo').classList.add('visible');
-            } catch(e) {}
-
-            p.querySelector('input, select').disabled = true;
-            p.classList.remove('edit');
-        };
-
-        delBtn.onclick = () => {
-            delBtn.parentElement.remove();
-        };
-
-        addBtn.parentNode.insertBefore(div.firstChild, addBtn);
-    };
 })();

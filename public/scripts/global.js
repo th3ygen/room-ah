@@ -57,12 +57,12 @@ const topnav = {
 };
 
 const navigateTo = path => {
-    window.location.href = `http://127.0.0.1:5500/public/routes/guest/${path}.html`;
+    window.location.href = path;
 };
 
 const createNavItem = (label, path) => (
     `
-    <div class="item" onClick="navigateTo('${path}')">
+    <div class="item" onClick="navigateTo('/${path}')">
         <span>${label}</span>
     </div>
     `

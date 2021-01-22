@@ -2,8 +2,19 @@ const jwt = require('jsonwebtoken');
 const base64 = require('base-64');
 
 module.exports = {
+    verifyTokenPost: token => {
+        const decoded = jwt.verify(token, process.env.JWT_KEY);
+        return decoded;
+    },
+
     verifyToken: (req, res, next) => {
         try {
+            if (!req.headers['auth-token']) {
+                return res.status(401).json({
+                    message: 'missing token'
+                });
+            }
+
             if (req.headers['auth-token'].split(' ')[0].toString() !== 'Token') {
                 return res.status(401).json({
                     message: 'invalid token'

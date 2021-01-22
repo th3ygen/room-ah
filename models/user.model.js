@@ -8,6 +8,8 @@ const schema = new mongoose.Schema({
         type: String, required: true
     },
 
+    fullname: String,
+
     photoUrl: String,
 
     role: String,
@@ -30,17 +32,17 @@ const schema = new mongoose.Schema({
     },
 
     mailAddress: {
-        lineOne: { type: String, required: true },
+        lineOne: { type: String },
         lineTwo: String,
-        city: { type: String, required: true },
-        postcode: { type: String, required: true },
-        country: { type: String, required: true },
+        city: { type: String },
+        postcode: { type: String },
+        country: { type: String },
     },
 
     bankDetails: {
-        name: { type: String, required: true }, 
-        bankName: { type: String, required: true },
-        accountNum: { type: String, required: true }
+        name: { type: String }, 
+        bankName: { type: String },
+        accountNum: { type: String }
     },
 
     houses: [mongoose.Types.ObjectId],

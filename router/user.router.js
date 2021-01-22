@@ -5,8 +5,14 @@ const middleware = {
 };
 const controller = require('../controllers/user.controller');
 
+router.get('/test', middleware.auth.verifyToken, (req, res) => {
+    res.status(200).json({
+        message: 'ade'
+    });
+});
+
 /* admin get all users */
-router.get('/list', [middleware.auth.verifyToken, middleware.auth.adminOnly], (req, res) => {
+router.get('/list', [middleware.auth.verifyToken, middleware.auth.adminOnly], async (req, res) => {
     try {
         const users = await controller.getAllPrivate();
 
@@ -19,7 +25,7 @@ router.get('/list', [middleware.auth.verifyToken, middleware.auth.adminOnly], (r
 });
 
 /* public view */
-router.get('/public', (req, res) => {
+router.get('/public', async (req, res) => {
     try {
         const users = await controller.getAllPublic();
 
@@ -29,11 +35,12 @@ router.get('/public', (req, res) => {
             message: e.msg
         });
     }
+});
 
 /* user only view */
-router.get('/profile', middleware.auth.verifyToken, (req, res) => {
+router.get('/profile', middleware.auth.verifyToken, async (req, res) => {
     try {
-        const user = await controller.getInfo();
+        const user = await controller.getInfo(req.token.username);
 
         res.status(200).json(user);
     } catch(e) {
@@ -43,7 +50,7 @@ router.get('/profile', middleware.auth.verifyToken, (req, res) => {
     }
 });
 
-router.get('/view', (req, res) => {
+router.get('/view', async (req, res) => {
     try {
         const user = await controller.getPublicInfo(req.params.username);
 
@@ -54,26 +61,23 @@ router.get('/view', (req, res) => {
         });
     }
 });
-
-});
-router.post('/update', middleware.auth.verifyToken, (req, res) => {
+router.post('/update', middleware.auth.verifyToken, async (req, res) => {
     try {
         const { token, body: { payload } } = req;
 
-        if (token.role === 'admin') {
-            controller.update(token.username, payload);
-        }
-        if (token.role === 'user') {
-            controller.updateFiltered(token.username, payload);
-        }
+        await controller.updateFiltered(token.username, payload);
         
+        res.status(200).json({
+            message: 'success'
+        });
     } catch(e) {
+        console.log(e);
         res.status(400).json({
-            message: e.msg
+            message: e.message
         });
     }
 });
-router.delete('/delete', [middleware.auth.verifyToken, middleware.auth.adminOnly], (req, res) => {
+router.delete('/delete', [middleware.auth.verifyToken, middleware.auth.adminOnly], async (req, res) => {
     try {
         const { username } = req.body;
 

@@ -91,34 +91,44 @@
   width: 100%;
   transition: 0.3s all;
 }
-.signup-wrapper > .inputs > .item > .input.success > input {
+.signup-wrapper > .inputs > .item > .validation-text {
+  padding-top: 10px;
+  font-size: 0.7rem;
+}
+.signup-wrapper > .inputs > .item.success > .input > input {
   border-bottom: 1px solid green;
 }
-.signup-wrapper > .inputs > .item > .input.success > .validation-feedback > div {
+.signup-wrapper > .inputs > .item.success > .input > .validation-feedback > div {
   background-color: green;
 }
-.signup-wrapper > .inputs > .item > .input.success > .validation-feedback > div:nth-child(1) {
+.signup-wrapper > .inputs > .item.success > .input > .validation-feedback > div:nth-child(1) {
   transform: rotateZ(45deg);
   width: 35%;
   top: 55%;
   left: 15%;
 }
-.signup-wrapper > .inputs > .item > .input.success > .validation-feedback > div:nth-child(2) {
+.signup-wrapper > .inputs > .item.success > .input > .validation-feedback > div:nth-child(2) {
   transform: rotateZ(-45deg);
   width: 80%;
   left: 30%;
 }
-.signup-wrapper > .inputs > .item > .input.error > input {
+.signup-wrapper > .inputs > .item.success > .validation-text {
+  color: green;
+}
+.signup-wrapper > .inputs > .item.error > .input > input {
   border-bottom: 1px solid red;
 }
-.signup-wrapper > .inputs > .item > .input.error > .validation-feedback > div {
+.signup-wrapper > .inputs > .item.error > .input > .validation-feedback > div {
   background-color: red;
 }
-.signup-wrapper > .inputs > .item > .input.error > .validation-feedback > div:nth-child(1) {
+.signup-wrapper > .inputs > .item.error > .input > .validation-feedback > div:nth-child(1) {
   transform: rotateZ(45deg);
 }
-.signup-wrapper > .inputs > .item > .input.error > .validation-feedback > div:nth-child(2) {
+.signup-wrapper > .inputs > .item.error > .input > .validation-feedback > div:nth-child(2) {
   transform: rotateZ(-45deg);
+}
+.signup-wrapper > .inputs > .item.error > .validation-text {
+  color: red;
 }
 .signup-wrapper > .actions {
   position: relative;

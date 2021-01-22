@@ -81,7 +81,7 @@ module.exports = {
         })
     ),
     edit: (id, payload) => (
-        new Promise((resolve, reject) => {
+        new Promise(async (resolve, reject) => {
             try {
                 const house = await House.findById(id);
 

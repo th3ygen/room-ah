@@ -113,22 +113,29 @@
                         transition: .3s all;
                     }
                 }
+            }
 
-                &.success {
+            & > .validation-text {
+                padding-top: 10px;
+                font-size: .7rem;
+            }
+
+            &.success {
+                & > .input {
                     & > input{
                         border-bottom: 1px solid green;
                     }
-
+    
                     & > .validation-feedback > div {
                         background-color: green;
-
+    
                         &:nth-child(1) {
                             transform: rotateZ(45deg);
                             width: 35%;
                             top: 55%;
                             left: 15%;
                         }
-
+    
                         &:nth-child(2) {
                             transform: rotateZ(-45deg);
                             width: 80%;
@@ -137,22 +144,32 @@
                     }
                 }
 
-                &.error {
+                & > .validation-text {
+                    color: green;
+                }
+            }
+
+            &.error {
+                & > .input {
                     & > input{
                         border-bottom: 1px solid red;
                     }
-
+    
                     & > .validation-feedback > div {
                         background-color: red;
-
+    
                         &:nth-child(1) {
                             transform: rotateZ(45deg);
                         }
-
+    
                         &:nth-child(2) {
                             transform: rotateZ(-45deg);
                         }
                     }
+                }
+
+                & > .validation-text {
+                    color: red;
                 }
             }
         }

@@ -6,8 +6,8 @@
     <title>Room-ah! - Profile</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="../../stylesheets/global.css">
-    <link rel="stylesheet" href="../../stylesheets/user/profile.css">
+    <link rel="stylesheet" href="/source/stylesheets/global.css">
+    <link rel="stylesheet" href="/source/stylesheets/user/profile.css">
 </head>
 <body>
     <div class="loading-screen-container">
@@ -25,8 +25,8 @@
     
     <div class="side-navbar">
         <div class="user">
-            <div class="img"></div>
-            <div class="name">Edel syaz</div>
+            <div class="img" id="userImg"></div>
+            <div class="name" id="username"></div>
         </div>
         <div class="navs" data-active="profile">
             
@@ -186,7 +186,7 @@
                         <div class="item">
                             <div class="label">Fullname</div>
                             <div class="value" data-label="fullname">
-                                <input type="text" name="" id="" value="Muhammad Aidil Syazwan bin Hamdan" disabled="true">
+                                <input type="text" name="" id="fullname" value="Muhammad Aidil Syazwan bin Hamdan" disabled="true">
                                 <div class="btn-edit visible">
                                     <i class="fas fa-edit"></i>
                                 </div>
@@ -201,7 +201,7 @@
                         <div class="item">
                             <div class="label">Email</div>
                             <div class="value" data-label="email">
-                                <input type="text" name="" id="" value="th3ygen@gmail.com" disabled="true">
+                                <input type="text" name="" id="email" value="th3ygen@gmail.com" disabled="true">
                                 <div class="btn-edit visible">
                                     <i class="fas fa-edit"></i>
                                 </div>
@@ -216,7 +216,7 @@
                         <div class="item">
                             <div class="label">Phone number</div>
                             <div class="value" data-label="phone">
-                                <input type="text" name="" id="" value="+601136524856" disabled="true">
+                                <input type="text" name="" id="phone" value="+601136524856" disabled="true">
                                 <div class="btn-edit visible">
                                     <i class="fas fa-edit"></i>
                                 </div>
@@ -235,10 +235,10 @@
                             <div class="photo">
                                 <div class="img">
                                     <div class="actions">
-                                        <div class="action">
+                                        <div class="action" id="photoEdit">
                                             <i class="fas fa-edit"></i>
                                         </div>
-                                        <div class="action">
+                                        <div class="action" id="photoRemove">
                                            <i class="fas fa-trash"></i>
                                         </div>
                                     </div>
@@ -249,7 +249,7 @@
                     </div>
                 </div>
             </div>
-            <div class="logged-in-content">
+            <!-- <div class="logged-in-content">
                 <div class="heading">Verification documents</div>
                 <div class="content">
                     <div class="items">
@@ -298,17 +298,20 @@
                         
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="logged-in-content">
                 <div class="heading">Bank details</div>
                 <div class="content">
                     <div class="items">
                         <div class="item">
                             <div class="label">Name</div>
-                            <div class="value" data-label="fullname">
-                                <input type="text" name="" id="" value="Muhammad Aidil Syazwan bin Hamdan" disabled="true">
+                            <div class="value" data-label="bankHolderName">
+                                <input type="text" name="" id="bankHolderName" value="Muhammad Aidil Syazwan bin Hamdan" disabled="true">
                                 <div class="btn-edit visible">
                                     <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="btn-undo">
+                                    <i class="fas fa-undo-alt"></i>
                                 </div>
                                 <div class="btn-save">
                                     <i class="fas fa-save"></i>
@@ -317,8 +320,8 @@
                         </div>
                         <div class="item">
                             <div class="label">Bank name</div>
-                            <div class="value" data-label="email">
-                                <input type="text" name="" id="" value="Bank Islam" disabled="true">
+                            <div class="value" data-label="bankName">
+                                <input type="text" name="" id="bankName" value="Bank Islam" disabled="true">
                                 <div class="btn-edit visible">
                                     <i class="fas fa-edit"></i>
                                 </div>
@@ -332,8 +335,8 @@
                         </div>
                         <div class="item">
                             <div class="label">Account number</div>
-                            <div class="value" data-label="phone">
-                                <input type="number" name="" id="" value="200136524856" disabled="true">
+                            <div class="value" data-label="bankAccNumber">
+                                <input type="number" name="" id="bankAccNumber" value="200136524856" disabled="true">
                                 <div class="btn-edit visible">
                                     <i class="fas fa-edit"></i>
                                 </div>
@@ -350,13 +353,12 @@
             </div>
         </div>
     </div>
-
     
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script defer src="../../scripts/global.js"></script>
-    <script defer src="../../scripts/user/global.js"></script>
-    <script defer src="../../scripts/user/profile.js"></script>
+    <script defer src="/source/scripts/global.js"></script>
+    <script defer src="/source/scripts/user/global.js"></script>
+    <script defer src="/source/scripts/user/profile.js"></script>
 </body>
 </html>

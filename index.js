@@ -13,6 +13,9 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+/* front end source files */
+app.use('/source', express.static('./public'));
+
 const server = require('http').createServer(app);
 
 // async wrapper

@@ -49,18 +49,13 @@ module.exports = {
     register: payload => (
         new Promise(async (resolve, reject) => {
             try {
-                const sameUsername = await User.findOne({ username });
-
-                if (sameUsername) {
-                    return reject({
-                        code: 400,
-                        msg: 'username already exist'
-                    });
-                }
-
                 const user = new User(payload);
 
-                user.password = await bcrypt.hash(user.password, process.env.HASH_SALT);
+                user.password = await bcrypt.hash(user.password, parseInt(process.env.HASH_SALT));
+
+                if (!user.photoUrl) {
+                    user.photoUrl = "";
+                }
 
                 user.role = 'user';
                 user.verified = false;
@@ -70,7 +65,7 @@ module.exports = {
                 delete user._id;
                 delete user.__v;
 
-                resolve();
+                resolve(user);
             } catch(e) {
                 reject({
                     code: 400,
@@ -154,5 +149,38 @@ module.exports = {
                 }
             })
         )
-    }
+    },
+
+    validate: payload => (
+        new Promise(async (resolve, reject) => {
+            const res = [];
+
+            /* unique username */
+            try {
+                const user = await User.findOne({ username: payload.username });
+
+                if (user) {
+                    res.push({
+                        label: 'username',
+                        message: 'Username has been taken'
+                    });
+                }
+            } catch(e) {}
+
+            /* used email */
+            try {
+                const user = await User.findOne({ ['contact.email']: payload.email });
+
+                if (user) {
+                    res.push({
+                        label: 'email',
+                        message: 'Email has been taken'
+                    });
+                }
+            } catch(e) {}
+            
+
+            resolve(res);
+        })
+    )
 };
