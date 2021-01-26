@@ -3,7 +3,12 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 const user = express.Router();
+const form = express.Router();
 const middlewares = require('../middlewares/auth.middleware');
+
+router.get('/', (req, res) => {
+    res.redirect('/home');
+});
 
 router.get('/home', (req, res) => {
     res.sendFile(path.join(root, 'public/routes/guest/homepage.html'));
@@ -32,6 +37,11 @@ user.get('/renting', (req, res) => {
     res.sendFile(path.join(root, 'public/routes/user/rented.html'));
 });
 
+form.get('/booking', (req, res) => {
+    res.sendFile(path.join(root, 'public/routes/forms/book.html'));
+});
+
 router.use('/user', user);
+router.use('/form', form);
 
 module.exports = router;

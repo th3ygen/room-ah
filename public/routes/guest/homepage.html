@@ -6,6 +6,7 @@
     <title>Room-ah!</title>
 
     <!-- dependencies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="/source/libs/splide/css/splide.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -18,10 +19,10 @@
             <div class="text">
                 <h1 class="ml11">
                     <span class="text-wrapper">
-                      <span class="line line1"></span>
-                      <span class="letters">Please wait</span>
+                    <span class="line line1"></span>
+                    <span class="letters">Please wait</span>
                     </span>
-                  </h1>
+                </h1>
             </div>
         </div>
     </div>
@@ -35,10 +36,10 @@
         </div>
 
         <div class="authoriz">
-            <div class="item">
+            <div class="item" data-path="signup">
                 <span>Sign up</span>
             </div>
-            <div class="item login">
+            <div class="item login" data-path="login">
                 <span>Login</span>
             </div>
         </div>
@@ -124,55 +125,74 @@
     </div>
     <footer>
         <div class="footer-content">
-
+            <div class="about">
+                <div class="heading">About</div>
+                <div class="content">
+                    <div class="brief">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi quidem facilis exercitationem delectus eius nesciunt modi dolore doloremque maiores optio?
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            <div class="heading">Vision</div>
+                            <div class="content">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. A, id.
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="heading">Mission</div>
+                            <div class="content">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, non.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact">
+                <div class="heading">Contact us</div>
+                <div class="content">
+                    <div class="brief">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi quidem facilis exercitationem delectus eius nesciunt modi dolore doloremque maiores optio?
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            <div class="heading">Leave us a note</div>
+                            <div class="content">
+                                <div class="button" id="feedbackBtn">
+                                    Feedback form
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="heading">Social media</div>
+                            <div class="content">
+                                <div class="icons" id="socialMedia">
+                                    <div class="icon" data-url="https://facebook.com/">
+                                        <i class="fab fa-facebook-square"></i>
+                                    </div>
+                                    <div class="icon" data-url="https://twitter.com/">
+                                        <i class="fab fa-twitter-square"></i>
+                                    </div>
+                                    <div class="icon" data-url="https://instagram.com/">
+                                        <i class="fab fa-instagram-square"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="/source/libs/splide/js/splide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     <script defer src="/source/scripts/global.js"></script>
-    <script defer>
-        const SLIDER_HOUSE = price => {
-            return `<li class="splide__slide">
-            <div class="preview-container">
-                <div class="details">
-                    <div class="price">
-                        <div class="discounted">
-                            $${price}
-                        </div>
-                        <div class="origin">
-                            $720
-                        </div>
-                    </div>
-                    <div class="address">
-                        62/1 Braybrooke Street, Bruce
-                    </div>
-                </div>
-                <div class="main-img"></div>
-                <div class="overlay"></div>
-            </div>
-            </li>`;
-        };
-        
-        document.addEventListener('DOMContentLoaded', function () {
-            /* slider content */
-            const housesSlider = document.querySelector('.houses-slide');
-            for(let x = 0; x < 5; x++) {
-                housesSlider.innerHTML += SLIDER_HOUSE(399 + x);
-            }
-        
-            /* init slider */
-            new Splide('.splide', {
-                focus: 'center',
-                perPage: 2,
-                trimSpace: false
-            }).mount();
-
-            AOS.init();
-        } );
-    </script>
+    <script defer src="/source/scripts/guest/footer.js"></script>
+    <script defer src="/source/scripts/guest/homepage.js"></script>
 </body>
 </html>

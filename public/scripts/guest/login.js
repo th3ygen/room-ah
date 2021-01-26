@@ -7,11 +7,11 @@
 
     const validate = () => {
         if (username.value === '') {
-            alert('Please enter username');
+            alertify.error('Please enter username');
             return false;
         }
         if (password.value === '') {
-            alert('Please enter password');
+            alertify.error('Please enter password');
             return false;
         }
 
@@ -37,7 +37,7 @@
 
             window.location.href = '/user/dashboard';
         } catch(e) {
-            alert('Wrong username or password');
+            alertify.error('Wrong username or password');
             console.log('error', e);
         }
     };

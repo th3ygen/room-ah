@@ -21,7 +21,23 @@ const utils = {
     },
     rnd: (min, max) => {
         return Math.round(Math.random() * (max - min) + min);
-    }
+    },
+    getParams: () => (
+        window.location.search.replace('?', '').split('&').map(o => {
+            const item = o.split('=');
+            return {
+                [item[0]]: item[1]
+            }
+        }).reduce((res, obj) => {
+            for (const key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    res[key] = obj[key];
+                }
+            }
+    
+            return res;
+        })
+    )
 };
 
 let pageloaded = false;
@@ -40,7 +56,7 @@ const pageload = () => (
 const topnav = {
     home: {
         label: 'Home',
-        path: 'homepage'
+        path: 'home'
     },
     rent: {
         label: 'Rent',
@@ -48,28 +64,56 @@ const topnav = {
     },
     about: {
         label: 'About',
-        path: 'about'
+        path: ''
     },
     contact: {
         label: 'Contact us',
-        path: 'contact'
+        path: ''
     }
 };
 
 const navigateTo = path => {
-    window.location.href = path;
+    window.location.pathname = path;
 };
 
-const createNavItem = (label, path) => (
-    `
-    <div class="item" onClick="navigateTo('/${path}')">
+const navOnClick = (label, path) => {
+    if (path === '') {
+        window.scrollTo(0, document.body.scrollHeight);
+    } else if (window.location.pathname.replace('/', '') === path) {
+        window.scrollTo(0, 0);
+    } else {
+        navigateTo(path);
+    }
+};
+
+const createNavItem = (label, path) => {
+    return `
+    <div class="item" onClick="navOnClick('${label}', '${path}')">
         <span>${label}</span>
     </div>
     `
-);
+};
 
 (async () => {
     await pageload();
+
+    /* sign up, login */
+    const authoriz = document.querySelectorAll('.authoriz > div');
+    for(const a of authoriz) {
+        a.onclick = () => {
+            console.log(a.dataset.path, a);
+            /* if logged in */
+            try {
+                const token = localStorage.getItem('token');
+
+                if (token) {
+                    return navigateTo('user/dashboard');
+                }
+            } catch(e) {}
+
+            navigateTo(a.dataset.path)
+        };
+    }
 
     /* loading screen */
     const loadingTextWrapper = document.querySelector('.ml11 .letters');
@@ -127,6 +171,9 @@ const createNavItem = (label, path) => (
 
     /* close loading screen */
     await utils.sleep(300);
-    document.querySelector('.loading-screen-container').setAttribute('style', 'left: -100vw');
+    try {
+        document.querySelector('.loading-screen-container').setAttribute('style', 'left: -100vw');
+    } catch(e) {}
+
 })();
 

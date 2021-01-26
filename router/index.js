@@ -1,4 +1,6 @@
 const express = require('express');
+const path = require('path');
+const root = require('app-root-path').path;
 
 const router = express.Router();
 const main = express.Router();
@@ -14,5 +16,8 @@ router.use('/house', house);
 
 main.use(page);
 main.use('/api', router);
+
+/* front end source files */
+main.use('/source', express.static('./public'));
 
 module.exports = main;

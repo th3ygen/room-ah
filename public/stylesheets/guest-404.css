@@ -1,0 +1,36 @@
+.container-404 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.container-404 .svg-anim {
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+}
+.container-404 > .text {
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  padding-right: 10%;
+}
+.container-404 > .text > .error-code {
+  font-size: 3.5rem;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+.container-404 > .text > .brief {
+  font-size: 1.5rem;
+  color: #bcbcbd;
+}
+
+footer {
+  margin-top: 100vh;
+}
+
+/*# sourceMappingURL=guest-404.css.map */

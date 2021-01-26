@@ -86,7 +86,7 @@ const createHouse = (imgUrl, owner, address, value, since, renter) => {
     const editAction = editActions.querySelector('.edit');
     const delAction = editActions.querySelector('.del');
 
-    for(let x = 0; x < 4; x++) {
+    /* for(let x = 0; x < 4; x++) {
         housesElement.innerHTML += createHouse(
             'https://preview.colorlib.com/theme/homey/images/property_1.jpg',
             'Edel syaz', '2 Zwar Place, Florey', utils.rnd(650403, 5342311),
@@ -96,7 +96,7 @@ const createHouse = (imgUrl, owner, address, value, since, renter) => {
                 phone: '+6013497946'
             }
         );
-    }
+    } */
 
     const housesItemElement = housesElement.querySelectorAll('.item');
     for (const item of housesItemElement) {
@@ -108,8 +108,10 @@ const createHouse = (imgUrl, owner, address, value, since, renter) => {
         };
     }
 
-    actionBtnAdd.onclick = () => {
-
+    actionBtnAdd.onclick = async () => {
+        const form = Swal.mixin({
+            input: 'Text'
+        })
     };
     actionBtnEdit.onclick = () => {
         if (housesElement.dataset.active !== 'true') {

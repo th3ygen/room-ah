@@ -1,6 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@mixin font($font-family, $font-file) {
+    @font-face {
+        font-family: $font-family;
+        src: url($font-file + '.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+@include font('Roboto', '/source/fonts/roboto/Roboto-Regular');
+
 * {
-    box-sizing: border-box;;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    scroll-behavior: smooth;
 }
 
 html, body {
@@ -164,6 +178,7 @@ input[type="text"], input[type="password"] {
     }
 
     & > .logo {
+        user-select: none;
         font-size: 2rem;
     }
 
@@ -180,6 +195,7 @@ input[type="text"], input[type="password"] {
 
             padding: 10px 25px;
 
+            user-select: none;
             cursor: pointer;
             &.active {
                 color: #f4772a;
@@ -203,6 +219,7 @@ input[type="text"], input[type="password"] {
 
             padding: 10px 25px;
 
+            user-select: none;
             cursor: pointer;
         }
 
@@ -414,6 +431,7 @@ input[type="text"], input[type="password"] {
 
             padding: 0 15px;
 
+            
             &.input {
                 display: flex;
 
@@ -467,6 +485,8 @@ input[type="text"], input[type="password"] {
                 flex-direction: column;
                 justify-content: center;
 
+                cursor: pointer;
+
                 & > .popup {
                     position: absolute;
                     top: 50px;
@@ -484,6 +504,23 @@ input[type="text"], input[type="password"] {
                     opacity: 0;
                     display: none;
                     
+                    &.settings {
+                        width: 250px !important;
+
+                        & > .items {
+                            overflow-y: initial !important;
+
+                            & > .item {
+                                cursor: pointer;
+                                user-select: none;
+                                &:hover > .setting {
+                                    color: #fcc8ac;
+                                }
+                            }
+                        }
+
+                    }
+
                     &::before {
                         content: '';
 
@@ -606,6 +643,9 @@ input[type="text"], input[type="password"] {
 
                                 z-index: 1;
                             }
+                            & > .setting {
+                                color: white;
+                            }
 
                             &:nth-last-child(1) {
                                 border-bottom: none;
@@ -625,11 +665,14 @@ footer {
     width: 100%;
 
     padding-top: 200px;
+    padding-bottom: 50px;
 
     background-color: #eee7e7;
     background-image: url('../svg/Sun-Tornado.svg');
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
+    background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 
     & > .footer-content {
         position: relative;
@@ -637,6 +680,96 @@ footer {
         height: fit-content;
         min-height: 50vh;
         width: 100%;
+
+        display: flex;
+        justify-content: center;
+        gap: 100px;
+
+        & > div {
+            position: relative;
+
+            height: fit-content;
+            width: auto;
+
+            flex: 0 1 35%;
+
+            padding: 10px 15px;
+
+            & > .heading {
+                padding-bottom: 30px;
+                font-weight: bold;
+                font-size: 1.5rem;
+                color: white;
+            }
+
+            & > .content {
+                height: fit-content;
+                width: 100%;
+
+                & > .brief {
+                    height: fit-content;
+                    width: 100%;
+
+                    color: rgba(255, 255, 255, 0.76);
+                    font-size: .9rem;
+                    text-align: justify;
+
+                    padding-bottom: 50px;
+                }
+
+                & > .items {
+                    height: fit-content;
+                    width: 100%;
+
+                    display: flex;
+                    gap: 50px;
+                    
+                    & > .item {
+                        flex: 0 1 30%;
+                        & > .heading {
+                            font-size: .9rem;
+                            text-transform: uppercase;
+                            padding-bottom: 5px;
+                            color: white;
+                        }
+                        & > .content {
+                            font-size: .8rem;
+                            color: rgba(255, 255, 255, 0.76);
+
+                            & > .button {
+                                width: fit-content;
+
+                                padding: 5px 10px;
+                                background: #fff;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                color: #f4772a;
+                            }
+
+                            & > .icons {
+                                height: fit-content;
+                                width: 100%;
+
+                                display: flex;
+                                gap: 10px;
+                                
+                                & > .icon {
+                                    color: #fff;
+                                    font-size: 1.2rem;
+                                    cursor: pointer;
+
+                                    transition: .3s all;
+
+                                    &:hover {
+                                        transform: scale(1.15);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

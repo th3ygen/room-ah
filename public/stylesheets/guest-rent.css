@@ -1,15 +1,15 @@
-.brief {
+.rbrief {
   position: relative;
   height: fit-content;
   width: 100%;
   margin-bottom: 100px;
 }
-.brief > .heading {
+.rbrief > .heading {
   font-size: 2rem;
   color: #f4772a;
   text-align: center;
 }
-.brief > .longtext {
+.rbrief > .longtext {
   width: 50%;
   margin: 15px auto;
   font-size: 0.9rem;

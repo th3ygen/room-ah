@@ -37,12 +37,16 @@
 .logged-in-content > .heading > .actions > .action {
   padding: 5px 15px;
   font-size: 0.8rem;
-  background-color: #e7e7e7;
+  background-color: #fff;
   border-radius: 5px;
   box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.15);
   transition: 0.3s all;
   cursor: pointer;
   user-select: none;
+}
+.logged-in-content > .heading > .actions > .action.toggled {
+  background-color: #ff3e3e !important;
+  color: white;
 }
 .logged-in-content > .heading > .actions > .action.disabled {
   display: none;
@@ -82,12 +86,17 @@
   font-size: 0.85rem;
 }
 .logged-in-content > .content > #editActions > .actions > .action {
-  background-color: #e4e4e4;
+  background-color: #fff;
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.25);
   color: #fc742b;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
   user-select: none;
+}
+.logged-in-content > .content > #editActions > .actions > .action.del {
+  background-color: #ff3e3e !important;
+  color: white;
 }
 .logged-in-content > .content > #editActions > .actions > .action.disabled {
   opacity: 0.5;
@@ -318,6 +327,68 @@
 .dashboard-stat-cards > .card > .value {
   color: #13957f;
   font-size: 1.5rem;
+}
+
+.add-house-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.493);
+  padding: 60px 0;
+  z-index: 999;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+}
+.add-house-form > .form {
+  position: relative;
+  height: fit-content;
+  width: 60%;
+  min-width: 400px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 30px;
+}
+.add-house-form > .form > .sections {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.add-house-form > .form > .sections > .section {
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  padding: 30px 50px;
+}
+.add-house-form > .form > .sections > .section > .heading {
+  color: #fc742b;
+  font-size: 1.2rem;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+}
+.add-house-form > .form > .sections > .section > .items {
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.add-house-form > .form > .sections > .section > .items > .item {
+  font-size: 0.9rem;
+}
+.add-house-form > .form > .sections > .section > .items > .item > .label {
+  color: #797979;
+}
+.add-house-form > .form > .sections > .section > .items > .item > .input {
+  width: 100%;
+  padding: 5px 0;
+}
+.add-house-form > .form > .sections > .section > .items > .item > .input > input, .add-house-form > .form > .sections > .section > .items > .item > .input textarea {
+  width: 40%;
+  padding: 5px 10px;
 }
 
 /*# sourceMappingURL=owned.css.map */

@@ -1,3 +1,10 @@
+const functions = {
+    logout: () => {
+        localStorage.removeItem('token');
+        window.location.href = '/home';
+    }
+};
+
 const navs = {
     dashboard: {
         icon: 'fas fa-laptop-house',
@@ -57,10 +64,8 @@ const verifyToken = async () => {
 };
 
 let user = null;
-const pagedataload = () => (
+const dataload = () => (
     new Promise(async (resolve, reject) => {
-        await pageload();
-
         try {
             if (user === null) {
                 user = await $.ajax({
@@ -72,7 +77,7 @@ const pagedataload = () => (
                     dataType: 'json'
                 });
         
-                username.innerHTML = user.username;
+                /* username.innerHTML = user.username; */
         
                 if (user.photoUrl) {
                     userImg.style.backgroundImage = `url("${user.photoUrl}")`;
@@ -89,20 +94,16 @@ const pagedataload = () => (
 );
 
 (async () => {
-    await pagedataload();
+    await pageload();
+
+    await verifyToken();
+
+    await dataload();
 
     /* verify user token */
-    if (!localStorage.getItem('token')) {
-        window.location.href = '/login';
-        return;
-    }
-
-    verifyToken();
     
     const userImg = document.querySelector('#userImg');
     const username = document.querySelector('#username');
-
-    
 
     const userElem = document.querySelector('.side-navbar > .user');
     const navElem = document.querySelector('.side-navbar > .navs');
@@ -112,6 +113,32 @@ const pagedataload = () => (
     for (const nav of Object.values(navs)) {
         navElem.innerHTML += createNav(nav);
     }
+
+    /* topbar tools */
+    const notiBtn = document.querySelector('.popup.noti').parentElement;
+    const settBtn = document.querySelector('.popup.settings').parentElement;
+
+    console.log(notiBtn.children[0]);
+
+    notiBtn.children[0].onclick = () => {
+        const popup = notiBtn.querySelector('.popup');
+
+        if (popup.classList.contains('active')) {
+            popup.classList.remove('active');
+        } else {
+            popup.classList.add('active');
+        }
+        
+    };
+    settBtn.children[0].onclick = () => {
+        const popup = settBtn.querySelector('.popup');
+
+        if (popup.classList.contains('active')) {
+            popup.classList.remove('active');
+        } else {
+            popup.classList.add('active');
+        }
+    };
 })();
 
 

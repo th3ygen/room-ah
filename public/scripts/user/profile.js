@@ -21,7 +21,9 @@ const createOtherDoc = items => {
 };
 
 (async () => {
-    const userData = await pagedataload();
+    await pageload();
+
+    const userData = await dataload();
 
     const photoElement = document.querySelector('.photo > .img');
 
@@ -37,9 +39,9 @@ const createOtherDoc = items => {
     photoEdit.onclick = async () => {
         const newUrl = window.prompt('Enter image URL', '');
 
-        try {
+        /* try {
             await $.
-        }
+        } */
     };
 
     if (userData.fullname) {
@@ -51,6 +53,8 @@ const createOtherDoc = items => {
     email.value = userData.contact.email;
     phone.value = userData.contact.phoneNum;
     
+    document.querySelector('#username').innerHTML = userData.fullname;
+
     if (userData.bankDetails.name) {
         bankHolderName.value = userData.bankDetails.name;
     } else {

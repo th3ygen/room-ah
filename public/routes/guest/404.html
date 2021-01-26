@@ -3,34 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room-ah! - Buy</title>
+    
+    <title>Room-ah! - Page not found</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="/source/stylesheets/global.css">
-    <link rel="stylesheet" href="/source/stylesheets/guest-rent.css">
-
+    <link rel="stylesheet" href="/source/stylesheets/guest-404.css">
 </head>
 <body>
-    <div class="loading-screen-container">
-        <div class="loading-screen">
-            <div class="text">
-                <h1 class="ml11">
-                    <span class="text-wrapper">
-                      <span class="line line1"></span>
-                      <span class="letters">Please wait</span>
-                    </span>
-                  </h1>
-            </div>
-        </div>
-    </div>
-
     <div class="top-navbar">
         <div class="logo">
             Room-
             <span style="color: #f4772a">Ah!</span>
         </div>
         <div class="nav-items">
-            
         </div>
 
         <div class="authoriz">
@@ -43,19 +29,26 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="rbrief">
-            <div class="heading">
-                Rent a house
+    <div class="container-404">
+        <lottie-player
+            src="/source/svg/Astronaut Animation/astronaout.json" 
+            background="transparent"
+            speed="1"
+            style="width: 50vh; height: 50vh;"
+            loop
+            autoplay
+            data-aos="zoom-out"
+            data-aos-offset="400"
+        ></lottie-player>
+        <div class="text">
+            <div class="error-code">
+                404
             </div>
-            <div class="longtext">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper nulla id elit rhoncus iaculis. Curabitur porta, ex ac bibendum varius, magna lorem varius purus, et ultricies augue odio vel magna.
+            <div class="brief">
+                Page not found
             </div>
         </div>
-
-        <div class="houses">
-            
-        </div>
+        
     </div>
 
     <footer>
@@ -118,13 +111,11 @@
             </div>
         </div>
     </footer>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    
     <script defer src="/source/scripts/global.js"></script>
     <script defer src="/source/scripts/guest/footer.js"></script>
-    <script defer src="/source/scripts/guest-rent.js"></script>
 </body>
 </html>
