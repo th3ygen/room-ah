@@ -45,7 +45,8 @@ const schema = new mongoose.Schema({
         accountNum: { type: String }
     },
 
-    houses: [mongoose.Types.ObjectId],
+    rentedHouses: [mongoose.Types.ObjectId],
+    ownedHouses: [mongoose.Types.ObjectId]
 });
 
 const User = mongoose.model('User', schema);

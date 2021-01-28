@@ -72,6 +72,31 @@ const topnav = {
     }
 };
 
+const requestWithoutToken = (type, url, data) => (
+    new Promise(async (resolve, reject) => {
+        try {
+            let res;
+            if (type === 'GET') {
+                res = await $.ajax({
+                    url, type,
+                    dataType: 'json'
+                });
+            } else {
+                res = await $.ajax({
+                    url, type, data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    dataType: 'json'
+                });
+            }
+
+            resolve(res);
+        } catch(e) {
+            console.error(e);
+            reject();
+        }
+    })
+);
+
 const navigateTo = path => {
     window.location.pathname = path;
 };
@@ -97,7 +122,23 @@ const createNavItem = (label, path) => {
 (async () => {
     await pageload();
 
-    /* sign up, login */
+    /* sign up, login, check logged in */
+    try {
+        const token = localStorage.getItem('token');
+
+        if (token) {
+            if (['/login', '/signup'].includes(window.location.pathname)) {
+                navigateTo('/user/dashboard');
+            }
+            const authoriz = document.querySelector('.authoriz');
+
+            authoriz.innerHTML = `
+            <div class="item login" data-path="user/dashboard">
+                <span>My account</span>
+            </div>`;
+        }
+    } catch(e) {}
+
     const authoriz = document.querySelectorAll('.authoriz > div');
     for(const a of authoriz) {
         a.onclick = () => {

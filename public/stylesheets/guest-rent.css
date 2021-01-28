@@ -21,6 +21,7 @@
 .houses {
   position: relative;
   height: fit-content;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -86,7 +87,7 @@
   font-size: 0.8rem;
 }
 .houses > .house > .details > .actions {
-  padding-top: 50px;
+  padding-top: 20px;
   width: 100%;
 }
 .houses > .house > .details > .actions > .proceed {
@@ -95,6 +96,7 @@
   background-color: #13957f;
   color: white;
   margin-left: auto;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=guest-rent.css.map */

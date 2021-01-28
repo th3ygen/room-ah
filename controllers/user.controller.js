@@ -56,6 +56,25 @@ const controller = {
             }
         })
     ),
+    updatePhotoUrl: (username, url) => (
+        new Promise(async (resolve, reject) => {
+            try {
+                const user = await User.findOne({ username });
+
+                user.photoUrl = url;
+
+                await user.save();
+
+                resolve();
+            } catch(e) {
+                console.log(e);
+                reject({
+                    code: 400,
+                    msg: e.message
+                });
+            }
+        })
+    ),
 
     /* for users */
     getAllPublic: () => (

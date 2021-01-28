@@ -60,6 +60,9 @@ module.exports = {
                 user.role = 'user';
                 user.verified = false;
 
+                user.rentedHouses = [];
+                user.ownedHouses = [];
+
                 await user.save();
 
                 delete user._id;

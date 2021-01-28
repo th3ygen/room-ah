@@ -137,6 +137,13 @@
   font-size: 0.7rem;
   transition: 0.3s all;
 }
+.logged-in-content > .content > .list > .item > .stats > .payments > .display > div > .value > div {
+  display: flex;
+}
+.logged-in-content > .content > .list > .item > .stats > .payments > .display > div > .value > div > .label {
+  padding-right: 5px;
+  width: 50px;
+}
 .logged-in-content > .content > .list > .item > .stats > .payments > .display > div.paid {
   background-color: greenyellow;
 }

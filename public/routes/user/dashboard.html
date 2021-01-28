@@ -38,12 +38,6 @@
         <div class="logged-in-topbar">
             <div class="title">Dashboard</div>
             <div class="tools">
-                <div class="tool input">
-                    <input type="text" placeholder="Quick Search...">
-                    <div class="submit">
-                        <i class="fas fa-search"></i>
-                    </div>
-                </div>
                 <div class="tool icon">
                     <div class="icon">
                         <i class="fas fa-bell"></i>
@@ -206,28 +200,28 @@
                         <div class="label">Owned houses</div>
                         <div class="value">
                             <i class="fas fa-house-user"></i>
-                            <span>0</span>
+                            <span id="ownedHouses">0</span>
                         </div>
                     </div>
                     <div class="card">
                         <div class="label">Rented houses</div>
                         <div class="value">
                             <i class="fas fa-home"></i>
-                            <span>1</span>
+                            <span id="rentedHouses">0</span>
                         </div>
                     </div>
                     <div class="card">
                         <div class="label">This month bill</div>
                         <div class="value">
                             <i class="fas fa-file-invoice-dollar"></i>
-                            <span>RM420</span>
+                            <span id="monthBill">RM0</span>
                         </div>
                     </div>
                     <div class="card">
                         <div class="label">Revenue</div>
                         <div class="value">
                             <i class="fas fa-money-check-alt"></i>
-                            <span>RM0</span>
+                            <span id="monthRev">RM0</span>
                         </div>
                     </div>
                 </div>
@@ -236,172 +230,190 @@
             <div class="logged-in-content no-bg">
                 <div class="heading">Rented Houses</div>
                 <div class="content">
-                    <div class="list cards">
-                        <div class="item card">
-                            <div class="brief">
-                                <div class="img"></div>
-                                <div class="details">
-                                    <div class="item">
-                                        <div class="label">Owner:</div>
-                                        <div class="value">Edel Syaz</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Address:</div>
-                                        <div class="value">2 Zwar Place, Florey</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Value:</div>
-                                        <div class="value">RM4,201,337</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Since:</div>
-                                        <div class="value">3 Jan 2001</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="stats">
-                                <div class="stat"></div>
-                            </div>
+                    <div class="empty visible">
+                        <div class="svg"></div>
+                        <div class="text">
+                            Such emptiness
                         </div>
-                        <div class="item card">
-                            <div class="brief">
-                                <div class="img"></div>
-                                <div class="details">
-                                    <div class="item">
-                                        <div class="label">Owner:</div>
-                                        <div class="value">Edel Syaz</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Address:</div>
-                                        <div class="value">2 Zwar Place, Florey</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Value:</div>
-                                        <div class="value">RM4,201,337</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Since:</div>
-                                        <div class="value">3 Jan 2001</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="stats">
-                                <div class="stat"></div>
-                            </div>
-                        </div>
-                        <div class="item card">
-                            <div class="brief">
-                                <div class="img"></div>
-                                <div class="details">
-                                    <div class="item">
-                                        <div class="label">Owner:</div>
-                                        <div class="value">Edel Syaz</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Address:</div>
-                                        <div class="value">2 Zwar Place, Florey</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Value:</div>
-                                        <div class="value">RM4,201,337</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Since:</div>
-                                        <div class="value">3 Jan 2001</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="stats">
-                                <div class="stat"></div>
-                            </div>
+                        <div class="hint">
+                            ( You didn't rent any house at the moment )
                         </div>
                     </div>
+                   <!--  <div class="list cards">
+                        <div class="item card">
+                            <div class="brief">
+                                <div class="img"></div>
+                                <div class="details">
+                                    <div class="item">
+                                        <div class="label">Owner:</div>
+                                        <div class="value">Edel Syaz</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Address:</div>
+                                        <div class="value">2 Zwar Place, Florey</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Value:</div>
+                                        <div class="value">RM4,201,337</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Since:</div>
+                                        <div class="value">3 Jan 2001</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats">
+                                <div class="stat"></div>
+                            </div>
+                        </div>
+                        <div class="item card">
+                            <div class="brief">
+                                <div class="img"></div>
+                                <div class="details">
+                                    <div class="item">
+                                        <div class="label">Owner:</div>
+                                        <div class="value">Edel Syaz</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Address:</div>
+                                        <div class="value">2 Zwar Place, Florey</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Value:</div>
+                                        <div class="value">RM4,201,337</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Since:</div>
+                                        <div class="value">3 Jan 2001</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats">
+                                <div class="stat"></div>
+                            </div>
+                        </div>
+                        <div class="item card">
+                            <div class="brief">
+                                <div class="img"></div>
+                                <div class="details">
+                                    <div class="item">
+                                        <div class="label">Owner:</div>
+                                        <div class="value">Edel Syaz</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Address:</div>
+                                        <div class="value">2 Zwar Place, Florey</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Value:</div>
+                                        <div class="value">RM4,201,337</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Since:</div>
+                                        <div class="value">3 Jan 2001</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats">
+                                <div class="stat"></div>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
     
             <div class="logged-in-content no-bg">
                 <div class="heading">Owned Houses</div>
                 <div class="content">
-                    <div class="list cards">
-                        <div class="item card">
-                            <div class="brief">
-                                <div class="img"></div>
-                                <div class="details">
-                                    <div class="item">
-                                        <div class="label">Owner:</div>
-                                        <div class="value">Edel Syaz</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Address:</div>
-                                        <div class="value">2 Zwar Place, Florey</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Value:</div>
-                                        <div class="value">RM4,201,337</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Since:</div>
-                                        <div class="value">3 Jan 2001</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="stats">
-                                <div class="stat"></div>
-                            </div>
+                    <div class="empty visible">
+                        <div class="svg"></div>
+                        <div class="text">
+                            Such emptiness
                         </div>
-                        <div class="item card">
-                            <div class="brief">
-                                <div class="img"></div>
-                                <div class="details">
-                                    <div class="item">
-                                        <div class="label">Owner:</div>
-                                        <div class="value">Edel Syaz</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Address:</div>
-                                        <div class="value">2 Zwar Place, Florey</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Value:</div>
-                                        <div class="value">RM4,201,337</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Since:</div>
-                                        <div class="value">3 Jan 2001</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="stats">
-                                <div class="stat"></div>
-                            </div>
-                        </div>
-                        <div class="item card">
-                            <div class="brief">
-                                <div class="img"></div>
-                                <div class="details">
-                                    <div class="item">
-                                        <div class="label">Owner:</div>
-                                        <div class="value">Edel Syaz</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Address:</div>
-                                        <div class="value">2 Zwar Place, Florey</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Value:</div>
-                                        <div class="value">RM4,201,337</div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="label">Since:</div>
-                                        <div class="value">3 Jan 2001</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="stats">
-                                <div class="stat"></div>
-                            </div>
+                        <div class="hint">
+                            ( You didn't own any house at the moment )
                         </div>
                     </div>
+                    <!-- <div class="list cards">
+                        <div class="item card">
+                            <div class="brief">
+                                <div class="img"></div>
+                                <div class="details">
+                                    <div class="item">
+                                        <div class="label">Owner:</div>
+                                        <div class="value">Edel Syaz</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Address:</div>
+                                        <div class="value">2 Zwar Place, Florey</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Value:</div>
+                                        <div class="value">RM4,201,337</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Since:</div>
+                                        <div class="value">3 Jan 2001</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats">
+                                <div class="stat"></div>
+                            </div>
+                        </div>
+                        <div class="item card">
+                            <div class="brief">
+                                <div class="img"></div>
+                                <div class="details">
+                                    <div class="item">
+                                        <div class="label">Owner:</div>
+                                        <div class="value">Edel Syaz</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Address:</div>
+                                        <div class="value">2 Zwar Place, Florey</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Value:</div>
+                                        <div class="value">RM4,201,337</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Since:</div>
+                                        <div class="value">3 Jan 2001</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats">
+                                <div class="stat"></div>
+                            </div>
+                        </div>
+                        <div class="item card">
+                            <div class="brief">
+                                <div class="img"></div>
+                                <div class="details">
+                                    <div class="item">
+                                        <div class="label">Owner:</div>
+                                        <div class="value">Edel Syaz</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Address:</div>
+                                        <div class="value">2 Zwar Place, Florey</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Value:</div>
+                                        <div class="value">RM4,201,337</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="label">Since:</div>
+                                        <div class="value">3 Jan 2001</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats">
+                                <div class="stat"></div>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
         </div>

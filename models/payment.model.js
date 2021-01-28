@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-    from: { type: mongoose.Types.ObjectId, required: true },
-    to: { type: mongoose.Types.ObjectId, required: true },
-    ref: { type: String, required: true },
-    date: { type: Date, required: true },
-    hash: { type: String, required: true }
+    from: String,
+    to: String,
+    ref: String,
+    date: String,
+    paid: Boolean,
+    amount: Number,
+    paidAmount: Number
 });
 
 const Payment = mongoose.model('Payment', schema);

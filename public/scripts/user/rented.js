@@ -1,30 +1,43 @@
-const createHouse = (imgUrl, owner, address, value, since, payments) => {
+const createHouse = (house, payments) => {
     let list = '';
-
+    
     for(const payment of payments) {
-        list += `<div class="${(payment.paid) ? 'paid' : 'unpaid'}">${payment.date}<div class="value">RM${utils.putComma(payment.amount)}</div></div>`
+        list += `
+        <div class="${(payment.paid) ? 'paid' : 'unpaid'}">
+            ${payment.date}
+            <div class="value">
+                <div class="item">
+                    <div class="label">Total:</div>
+                    <div class="val">RM${utils.putComma(payment.amount)}</div>
+                </div>
+                <div class="item">
+                    <div class="label">Paid:</div>
+                    <div class="val">RM${utils.putComma(payment.paidAmount)}</div>
+                </div>
+            </div>
+        </div>`
     }
 
     return `
     <div class="item">
         <div class="brief">
-            <div class="img" style="background-image:url('${imgUrl}'"></div>
+            <div class="img" style="background-image:url('${house.mediaFiles[0]}')"></div>
             <div class="details">
                 <div class="item">
                     <div class="label">Owner:</div>
-                    <div class="value">${owner}</div>
+                    <div class="value">${house.owner.username}</div>
                 </div>
                 <div class="item">
                     <div class="label">Address:</div>
-                    <div class="value">${address}</div>
+                    <div class="value">${house.address}</div>
                 </div>
                 <div class="item">
-                    <div class="label">Value:</div>
-                    <div class="value">RM${utils.putComma(value)}</div>
+                    <div class="label">Email:</div>
+                    <div class="value">${house.owner.contact.email}</div>
                 </div>
                 <div class="item">
-                    <div class="label">Since:</div>
-                    <div class="value">${since}</div>
+                    <div class="label">Phone:</div>
+                    <div class="value">${house.owner.contact.phoneNum}</div>
                 </div>
             </div>
         </div>
@@ -40,19 +53,36 @@ const createHouse = (imgUrl, owner, address, value, since, payments) => {
 (async () => {
     await pageload();
 
-    /* house list */
+    let totalPaid = 0;
+    let totalNeedToPay = 0;
+    let status = 'Paid';
+
+    /* get all rented houses */
+    const { houses } = await requestWithToken('GET', '/api/house/rented');
+    console.log(houses);
+    const emptyElement = document.querySelector('#houses > .empty');
     const houseListElement = document.querySelector('#houses > .content > .list');
 
-    for(let x = 0; x < 4; x++) {
-        let payments = [];
-        for (let y = 0; y < 25; y++) {
-            payments.push({
-                paid: (utils.rnd(0, 1)),
-                date: 'Test 2073',
-                amount: utils.rnd(300, 600)
-            });
+    if (houses.length > 0) {
+        emptyElement.classList.remove('visible');
+
+        for await (const house of houses) {
+            const { payments } = await requestWithToken('POST', '/api/house/payments', { houseId: house._id });
+        
+            for (const payment of payments) {
+                totalPaid += payment.paidAmount;
+                totalNeedToPay += payment.amount - payment.paidAmount;
+                status = (!payment.paid) ? 'Unpaid' : status;
+            }
+
+            houseListElement.innerHTML += createHouse(house, payments);
         }
 
-        houseListElement.innerHTML += createHouse('https://preview.colorlib.com/theme/homey/images/property_1.jpg', 'Edel syaz', '2 Zwar Place, Florey', utils.rnd(650403, 5342311), '3 Jan 2021', payments);
+        document.querySelector('#totalHouse').innerHTML = houses.length;
+        document.querySelector('#totalPaid').innerHTML = `RM${utils.putComma(totalPaid)}`;
+        document.querySelector('#totalNeedToPay').innerHTML = `RM${utils.putComma(totalNeedToPay)}`;
+        document.querySelector('#status').innerHTML = status;
     }
+
+    
 })();

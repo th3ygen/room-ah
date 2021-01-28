@@ -1,20 +1,20 @@
-const SLIDER_HOUSE = price => {
+const SLIDER_HOUSE = house => {
     return `<li class="splide__slide">
     <div class="preview-container">
         <div class="details">
             <div class="price">
                 <div class="discounted">
-                    $${price}
+                    RM${house.pricing.rate}/month
                 </div>
                 <div class="origin">
-                    $720
+                    RM${house.pricing.deposit} as deposit
                 </div>
             </div>
             <div class="address">
-                62/1 Braybrooke Street, Bruce
+                ${house.address}
             </div>
         </div>
-        <div class="main-img"></div>
+        <div class="main-img" style="background-image: url('${house.mediaFiles[0]}')"></div>
         <div class="overlay"></div>
     </div>
     </li>`;
@@ -25,8 +25,15 @@ const SLIDER_HOUSE = price => {
 
     /* slider content */
     const housesSlider = document.querySelector('.houses-slide');
-    for(let x = 0; x < 5; x++) {
-        housesSlider.innerHTML += SLIDER_HOUSE(399 + x);
+
+    const { houses } = await $.ajax({
+        url: '/api/house/public/list', type: 'get',
+        contentType: 'application/json',
+        dataType: 'json'
+    });
+    
+    for (const house of houses) {
+        housesSlider.innerHTML += SLIDER_HOUSE(house);
     }
 
     /* init slider */

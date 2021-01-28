@@ -9,25 +9,31 @@ const navs = {
     dashboard: {
         icon: 'fas fa-laptop-house',
         label: "Dashboard",
-        path: '/dashboard',
+        path: '/user/dashboard',
         active: false
     },
     owned: {
         icon: 'fas fa-house-user',
         label: "Owned",
-        path: '/owned',
+        path: '/user/owned',
         active: false
     },
     rented: {
         icon: 'fas fa-couch',
         label: "Renting",
-        path: '/renting',
+        path: '/user/renting',
         active: false
     },
     profile: {
         icon: 'fas fa-user-cog',
         label: "Profile",
-        path: '/profile',
+        path: '/user/profile',
+        active: false
+    },
+    home: {
+        icon: 'fas fa-home',
+        label: "Back to home",
+        path: '/home',
         active: false
     }
 };
@@ -35,7 +41,7 @@ const navs = {
 const notiPopup = ``;
 
 const createNav = data => (
-    `<div class="nav ${(data.active ? 'active': '')}" onClick="navigateTo('/user${data.path}')">
+    `<div class="nav ${(data.active ? 'active': '')}" onClick="navigateTo('${data.path}')">
         <div class="icon">
             <i class="${data.icon}"></i>
         </div>
@@ -63,21 +69,44 @@ const verifyToken = async () => {
     }
 };
 
-let user = null;
-const dataload = () => (
+const requestWithToken = (type, url, data) => (
     new Promise(async (resolve, reject) => {
         try {
-            if (user === null) {
-                user = await $.ajax({
-                    url: '/api/user/profile',
-                    type: 'GET',
+            let res;
+            if (type === 'GET') {
+                res = await $.ajax({
+                    url, type,
                     headers: {
                         'auth-token': `Token ${localStorage.getItem('token')}`
                     },
                     dataType: 'json'
                 });
-        
-                /* username.innerHTML = user.username; */
+            } else {
+                res = await $.ajax({
+                    url, type, data: JSON.stringify(data),
+                    headers: {
+                        'auth-token': `Token ${localStorage.getItem('token')}`
+                    },
+                    contentType: 'application/json',
+                    dataType: 'json'
+                });
+            }
+
+            resolve(res);
+        } catch(e) {
+            console.error(e);
+            reject();
+        }
+    })
+);
+
+let user = null;
+const dataload = () => (
+    new Promise(async (resolve, reject) => {
+        try {
+            if (user === null) {
+                user = await requestWithToken('GET', '/api/user/profile');
+                username.innerHTML = user.username;
         
                 if (user.photoUrl) {
                     userImg.style.backgroundImage = `url("${user.photoUrl}")`;
@@ -90,7 +119,6 @@ const dataload = () => (
             alert('Failed to retrieve user info');
         }
     })
-    
 );
 
 (async () => {
@@ -117,8 +145,6 @@ const dataload = () => (
     /* topbar tools */
     const notiBtn = document.querySelector('.popup.noti').parentElement;
     const settBtn = document.querySelector('.popup.settings').parentElement;
-
-    console.log(notiBtn.children[0]);
 
     notiBtn.children[0].onclick = () => {
         const popup = notiBtn.querySelector('.popup');

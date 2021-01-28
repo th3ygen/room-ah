@@ -4,13 +4,7 @@ const schema = new mongoose.Schema({
     title: { type: String, required: true },
     details: String,
 
-    address: {
-        lineOne: { type: String, required: true },
-        lineTwo: String,
-        city: { type: String, required: true },
-        postcode: { type: String, required: true },
-        country: { type: String, required: true }
-    },
+    address: String,
 
     pricing: {
         deposit: Number,
@@ -21,22 +15,43 @@ const schema = new mongoose.Schema({
         lon: Number, lat: Number
     },
 
-    mediaFiles: [{
-        label: { type: String, required: true },
-        link: { type: String, required: true }
-    }],
+    mediaFiles: [String],
 
     owner: {
         username: { type: String, required: true },
-        id: { type: mongoose.Types.ObjectId, required: true }
+        contact: {
+            email: String,
+            phoneNum: String
+        },
+        id: mongoose.Types.ObjectId
     },
 
     isBooked: Boolean,
-    bookingInfo: {
-        date: Date,
-        enterDate: Date,
+    bookingData: {
+        username: String,
+        fullname: String,
+        photoUrl: String,
+        contact: {
+            email: String,
+            phoneNum: String
+        },
+        date: String,
+        enterDate: String
+    },
+
+    isRented: Boolean,
+    rentData: {
+        username: String,
+        fullname: String,
+        photoUrl: String,
+        contact: {
+            email: String,
+            phoneNum: String
+        },
         payments: [mongoose.Types.ObjectId]
-    }
+    },
+
+    createdAt: Number
 });
 
 const House = mongoose.model('House', schema);

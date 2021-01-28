@@ -37,11 +37,38 @@ const createOtherDoc = items => {
     const photoRemove = document.querySelector('#photoRemove');
 
     photoEdit.onclick = async () => {
-        const newUrl = window.prompt('Enter image URL', '');
+        const form = await Swal.fire({
+            title: 'Enter new photo URL',
+            input: 'text',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Update'
+        });
 
-        /* try {
-            await $.
-        } */
+        if (form.value !== '') {
+            try {
+                await requestWithToken('POST', '/api/user/updatePhoto', {
+                    photoUrl: form.value
+                });
+
+                await Swal.fire({
+                    icon: 'success',
+                    title: 'Updated!',
+                    text: 'Your new photo url has been saved'
+                });
+                
+                window.location.reload();
+            } catch(e) {
+                await Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Something went wrong'
+                });
+                
+                window.location.reload();
+            }
+        }
     };
 
     if (userData.fullname) {

@@ -12,11 +12,6 @@
 
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, .25);
 
-    &.no-bg {
-        background-color: transparent;
-        box-shadow: none;
-    }
-
     & > .heading {
         position: relative;
 
@@ -294,6 +289,7 @@
                                 width: 100%;
 
                                 display: flex;
+                                gap: 10px;
 
                                 & > .photo {
                                     position: relative;
@@ -357,8 +353,6 @@
                                 filter: grayscale(1);
                                 opacity: .7;
 
-                                display: none;
-
                                 & > .svg {
                                     position: absolute;
                                     top: calc(30%);
@@ -387,9 +381,68 @@
                             
                                     color: #797979;
                                 }
+                            }
 
-                                &.visible {
-                                    display: block;
+                            & > .new-booking {
+                                position: relative;
+
+                                height: 100%;
+                                width: 100%;
+
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+
+                                & > .heading {
+                                    font-size: 1.1rem;
+                                    color: #fc742b;
+                                    padding-bottom: 15px; 
+                                }
+                                & > .actions {
+                                    position: relative;
+
+                                    height: fit-content;
+                                    width: fit-content;
+
+                                    display: flex;
+                                    gap: 10px;
+
+                                    & > .action {
+                                        padding: 5px 10px;
+                                        background-color: #fff;
+                                        color: #fc742b;
+                                        border-radius: 5px;
+                                        box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, .25);
+                                        cursor: pointer;
+
+                                        &.decline {
+                                            color: #fff;
+                                            background-color: rgb(255, 94, 94);
+                                        }
+                                    }
+                                }
+                            }
+
+                            &.btn-confirm-pay{
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;
+
+                                & > .value {
+                                    font-size: .9rem;
+                                    color: #fc742b;
+                                }
+
+                                & > .btn {
+                                    background-color: #fff;
+                                    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .25);
+                                    color: #fc742b;
+                                    padding: 5px 10px;
+                                    border-radius: 5px;
+                                    cursor: pointer;
                                 }
                             }
                         }
@@ -413,45 +466,6 @@
     }
 }
 
-.dashboard-stat-cards {
-    position: relative;
-
-    height: fit-content;
-    width: 100%;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 30px;
-
-    & > .card {
-        position: relative;
-
-        height: fit-content;
-        
-        flex: 0 1 200px;
-
-        background-color: #fff;
-
-        border-radius: 5px;
-
-        padding: 25px;
-
-        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, .25);
-
-        & > .label {
-            color: #afafae;
-            font-size: .85rem;
-            padding-bottom: 15px;
-        }
-
-        & > .value {
-            color: #13957f;
-            font-size: 1.5rem;
-        }
-    }
-}
-
 .add-house-form {
     position: fixed;
     top: 0;
@@ -470,6 +484,10 @@
 
     display: flex;
     justify-content: center;
+
+    &.hidden {
+        display: none;
+    }
 
     & > .form {
         position: relative;
@@ -525,9 +543,48 @@
                             & > input, textarea {
                                 width: 40%;
                                 padding: 5px 10px;
+
+                                &::placeholder {
+                                    color: #afafae;
+                                }
                             }
                         }
                     }
+                }
+            }
+        }
+
+        & > .actions {
+            position: relative;
+
+            height: fit-content;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+
+            & > div {
+                position: relative;
+
+                height: fit-content;
+                width: 100px;
+
+                padding: 5px 0;;
+
+                border-radius: 5px;
+                box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, .25);
+
+                text-align: center;
+
+                cursor: pointer;
+
+                &.cancel {
+                    color: #fc742b;
+                }
+                &.submit {
+                    color: #fff;
+                    background: #fc742b;
                 }
             }
         }

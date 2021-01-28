@@ -38,6 +38,18 @@ router.get('/public', async (req, res) => {
 });
 
 /* user only view */
+router.post('/updatePhoto', middleware.auth.verifyToken, async (req, res) => {
+    try {
+        await controller.updatePhotoUrl(req.token.username, req.body.photoUrl);
+        res.status(200).json({
+            message: 'photo updated'
+        });
+    } catch(e) {
+        res.status(400).json({
+            message: e.msg
+        });
+    }
+});
 router.get('/profile', middleware.auth.verifyToken, async (req, res) => {
     try {
         const user = await controller.getInfo(req.token.username);

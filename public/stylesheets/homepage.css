@@ -36,7 +36,6 @@
 }
 .house-preview .preview-container > .details > .price > .origin {
   font-size: 0.8rem;
-  text-decoration: line-through;
   color: #bcbcbc;
 }
 .house-preview .preview-container > .main-img {

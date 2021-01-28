@@ -185,6 +185,15 @@
                                     font-size: .7rem;
                                     
                                     transition: .3s all;
+
+                                    & > div {
+                                        display: flex;
+
+                                        & > .label {
+                                            padding-right: 5px;
+                                            width: 50px;
+                                        }
+                                    }
                                 }
                                 
                                 &.paid {

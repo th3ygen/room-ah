@@ -36,13 +36,13 @@
 
     <div class="logged-in-container">
         <div class="logged-in-topbar">
-            <div class="title">Owned</div>
+            <div class="title">Dashboard</div>
             <div class="tools">
                 <div class="tool icon">
                     <div class="icon">
                         <i class="fas fa-bell"></i>
                     </div>
-                    <div class="popup">
+                    <div class="popup noti">
                         <div class="items">
                             <div class="item">
                                 <div class="options">
@@ -164,7 +164,6 @@
                                     Lorem itsum doler sit amit ape tah test test hmm jadi la kot
                                     Lorem itsum doler sit amit ape tah test test hmm jadi la kot
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -172,6 +171,22 @@
                 <div class="tool icon">
                     <div class="icon">
                         <i class="fas fa-cog"></i>
+                    </div>
+                    <div class="popup settings">
+                        <div class="items">
+                            <div class="item">
+                                <div class="setting">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Change password
+                                </div>
+                            </div>
+                            <div class="item" onclick="functions.logout()">
+                                <div class="setting">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -184,28 +199,28 @@
                         <div class="label">Total houses</div>
                         <div class="value">
                             <i class="fas fa-house-user"></i>
-                            <span>5</span>
+                            <span id="totalHouse">0</span>
                         </div>
                     </div>
                     <div class="card">
                         <div class="label">On Rent</div>
                         <div class="value">
                             <i class="fas fa-home"></i>
-                            <span>1</span>
+                            <span id="totalRented">0</span>
                         </div>
                     </div>
                     <div class="card">
                         <div class="label">Booked</div>
                         <div class="value">
                             <i class="fas fa-file-invoice-dollar"></i>
-                            <span>3</span>
+                            <span id="totalBooked">0</span>
                         </div>
                     </div>
                     <div class="card">
                         <div class="label">Monthly revenue</div>
                         <div class="value">
                             <i class="fas fa-money-check-alt"></i>
-                            <span>RM420</span>
+                            <span id="monthRevenue">RM0</span>
                         </div>
                     </div>
                 </div>
@@ -225,16 +240,17 @@
                 <div class="content">
                     <div class="" id="editActions">
                         <div class="actions">
-                            <div class="action del">
+                            <div class="action del" id="deleteSelected">
                                 <i class="fas fa-trash"></i> Delete selected
                             </div>
-                            <div class="action edit">
-                                <i class="fas fa-edit"></i> Edit
+                            <div class="action edit" id="editSelected">
+                                <i class="fas fa-edit"></i> Edit pricing
                             </div>
                         </div>
                         
                     </div>
                     <div class="list" id="houses" data-active="false">
+                        
                         <div class="empty visible">
                             <div class="svg"></div>
                             <div class="text">
@@ -250,7 +266,7 @@
         </div>
     </div>
 
-    <div class="add-house-form">
+    <div class="add-house-form hidden">
         <div class="form">
             <div class="sections">
                 <div class="section">
@@ -259,19 +275,19 @@
                         <div class="item">
                             <div class="label">Username</div>
                             <div class="input">
-                                <input type="text" disabled>
+                                <input type="text" disabled id="username">
                             </div>
                         </div>
                         <div class="item">
                             <div class="label">Email</div>
                             <div class="input">
-                                <input type="email" disabled>
+                                <input type="email" disabled id="email">
                             </div>
                         </div>
                         <div class="item">
                             <div class="label">Phone number</div>
                             <div class="input">
-                                <input type="text" disabled>
+                                <input type="text" disabled id="phone">
                             </div>
                         </div>
                     </div>
@@ -282,13 +298,13 @@
                         <div class="item">
                             <div class="label">Label</div>
                             <div class="input">
-                                <input type="text">
+                                <input type="text" placeholder="A title for your house" id="label">
                             </div>
                         </div>
                         <div class="item">
                             <div class="label">Description</div>
                             <div class="input">
-                                <textarea cols="5" rows="5"></textarea>
+                                <textarea cols="5" rows="5" placeholder="Briefly describe your house" id="brief"></textarea>
                             </div>
                         </div>
                     </div>
@@ -297,15 +313,15 @@
                     <div class="heading">Pricing</div>
                     <div class="items">
                         <div class="item">
-                            <div class="label">Deposit</div>
+                            <div class="label">Deposit (RM)</div>
                             <div class="input">
-                                <input type="text">
+                                <input type="number" placeholder="Initial payment" id="deposit">
                             </div>
                         </div>
                         <div class="item">
-                            <div class="label">Monthly</div>
+                            <div class="label">Monthly (RM)</div>
                             <div class="input">
-                                <input type="email">
+                                <input type="number" placeholder="Monthly payment" id="rate">
                             </div>
                         </div>
                     </div>
@@ -316,19 +332,19 @@
                         <div class="item">
                             <div class="label">Address</div>
                             <div class="input">
-                                <input type="text">
+                                <input type="text" id="address">
                             </div>
                         </div>
                         <div class="item">
                             <div class="label">Longitute</div>
                             <div class="input">
-                                <input type="email">
+                                <input type="number" id="lon">
                             </div>
                         </div>
                         <div class="item">
                             <div class="label">Latitude</div>
                             <div class="input">
-                                <input type="email">
+                                <input type="number" id="lat">
                             </div>
                         </div>
                     </div>
@@ -339,19 +355,34 @@
                         <div class="item">
                             <div class="label">Main</div>
                             <div class="input">
-                                <input type="text">
+                                <input type="url" placeholder="Main image url" id="mainImg">
                             </div>
                         </div>
                         <div class="item">
-                            <div class="label">Additionals</div>
+                            <div class="label">Additional #1</div>
                             <div class="input">
-                                <input type="email">
+                                <input type="url" placeholder="Additional image url" id="aImg1">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="label">Additional #2</div>
+                            <div class="input">
+                                <input type="url" placeholder="Additional image url" id="aImg2">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="label">Additional #3</div>
+                            <div class="input">
+                                <input type="url" placeholder="Additional image url" id="aImg3">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+            <div class="actions">
+                <div class="cancel">Cancel</div>
+                <div class="submit">Add</div>
+            </div>
         </div>
     </div>
 
@@ -363,5 +394,6 @@
     <script defer src="/source/scripts/global.js"></script>
     <script defer src="/source/scripts/user/global.js"></script>
     <script defer src="/source/scripts/user/owned.js"></script>
+    <script defer src="/source/scripts/forms/addHouse.js"></script>
 </body>
 </html>
